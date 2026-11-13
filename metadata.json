@@ -1,0 +1,6 @@
+{
+  "name": "Digital Portfolio — Đỗ Nguyễn Phương Anh",
+  "description": "Digital Portfolio cá nhân môn Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo — Đỗ Nguyễn Phương Anh, Ngành Quản lý thông tin K70, Trường Đại học Khoa học Xã hội và Nhân văn – ĐHQGHN (USSH).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

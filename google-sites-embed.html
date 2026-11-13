@@ -1,0 +1,3565 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Portfolio — Đỗ Nguyễn Phương Anh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Ruthie&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       DIGITAL PORTFOLIO — ĐỖ NGUYỄN PHƯƠNG ANH (USSH · K70 · 2026)
+       Phiên bản tối ưu nhúng trực tiếp vào Google Sites (Single-File HTML)
+       ========================================================================== */
+    :root {
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+      --bg-canvas: #f4f1fa;
+      --bg-orb-lavender: rgba(183, 166, 240, 0.45);
+      --bg-orb-rose: rgba(247, 198, 224, 0.5);
+      --bg-orb-sky: rgba(182, 226, 248, 0.52);
+
+      --surface-paper: #fffefc;
+      --surface-spine: #f6f3fc;
+      --surface-card: #fbf9fe;
+      --surface-subtle: #efeaf9;
+      --surface-topbar: rgba(255, 254, 252, 0.9);
+
+      --ink-primary: #1f1a2e;
+      --ink-secondary: #534c69;
+      --ink-muted: #706987;
+
+      --accent-primary: #5e4ea6;
+      --accent-primary-hover: #4b3d8c;
+      --accent-primary-ink: #ffffff;
+      --accent-rose: #b85680;
+      --accent-soft: rgba(94, 78, 166, 0.09);
+
+      --border-hairline: rgba(94, 78, 166, 0.14);
+      --border-strong: rgba(94, 78, 166, 0.28);
+
+      --shadow-book: 0 20px 56px -18px rgba(48, 36, 89, 0.14), 0 2px 10px rgba(48, 36, 89, 0.05);
+      --shadow-card: 0 6px 20px -10px rgba(48, 36, 89, 0.08);
+      --shadow-modal: 0 30px 80px -18px rgba(25, 18, 48, 0.35);
+
+      --radius-book: 20px;
+      --radius-card: 14px;
+      --radius-btn: 10px;
+
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --topbar-height: 58px;
+    }
+
+    html[data-theme="dark"] {
+      --bg-canvas: #100e19;
+      --bg-orb-lavender: rgba(110, 90, 196, 0.22);
+      --bg-orb-rose: rgba(168, 86, 134, 0.18);
+      --bg-orb-sky: rgba(74, 134, 186, 0.18);
+
+      --surface-paper: #191626;
+      --surface-spine: #1f1b2e;
+      --surface-card: #221e33;
+      --surface-subtle: #2b2640;
+      --surface-topbar: rgba(21, 18, 33, 0.9);
+
+      --ink-primary: #f3effb;
+      --ink-secondary: #cbc3de;
+      --ink-muted: #9e95b8;
+
+      --accent-primary: #b6a8f7;
+      --accent-primary-hover: #c9befb;
+      --accent-primary-ink: #141122;
+      --accent-rose: #eb9bbf;
+      --accent-soft: rgba(182, 168, 247, 0.13);
+
+      --border-hairline: rgba(214, 204, 248, 0.12);
+      --border-strong: rgba(214, 204, 248, 0.28);
+
+      --shadow-book: 0 24px 64px -18px rgba(0, 0, 0, 0.55);
+      --shadow-card: 0 8px 24px -12px rgba(0, 0, 0, 0.4);
+      --shadow-modal: 0 32px 88px -16px rgba(0, 0, 0, 0.72);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: var(--font-body);
+      font-size: 0.96875rem;
+      line-height: 1.65;
+      color: var(--ink-primary);
+      background-color: var(--bg-canvas);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color 220ms var(--ease-out), color 220ms var(--ease-out);
+    }
+
+    html[data-theme="dark"] body {
+      letter-spacing: 0.01em;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input {
+      font-family: inherit;
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.84em;
+      padding: 0.1em 0.35em;
+      border-radius: 5px;
+      background-color: var(--accent-soft);
+      color: var(--accent-primary);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent-primary);
+      outline-offset: 2px;
+    }
+
+    .ambient-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .ambient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.9;
+    }
+
+    .ambient-orb--lavender {
+      width: 56vw;
+      height: 56vw;
+      max-width: 720px;
+      max-height: 720px;
+      top: -14%;
+      left: -10%;
+      background: var(--bg-orb-lavender);
+    }
+
+    .ambient-orb--rose {
+      width: 50vw;
+      height: 50vw;
+      max-width: 660px;
+      max-height: 660px;
+      bottom: -16%;
+      right: -8%;
+      background: var(--bg-orb-rose);
+    }
+
+    .ambient-orb--sky {
+      width: 44vw;
+      height: 44vw;
+      max-width: 580px;
+      max-height: 580px;
+      top: 22%;
+      right: 12%;
+      background: var(--bg-orb-sky);
+    }
+
+    /* Thanh điều hướng trên cùng */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      height: var(--topbar-height);
+      background: var(--surface-topbar);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .topbar__inner {
+      max-width: 1280px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .topbar__brand {
+      font-family: 'Ruthie', var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--ink-primary);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .topbar__nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .topbar__link {
+      position: relative;
+      background: transparent;
+      border: 0;
+      padding: 8px 2px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: color 180ms var(--ease-out);
+    }
+
+    .topbar__link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 2px;
+      height: 2px;
+      background: var(--accent-primary);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 200ms var(--ease-out);
+    }
+
+    .topbar__link:hover,
+    .topbar__link.is-active {
+      color: var(--ink-primary);
+    }
+
+    .topbar__link.is-active::after {
+      transform: scaleX(1);
+    }
+
+    .topbar__actions {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 40px;
+      padding: 8px 16px;
+      border-radius: var(--radius-btn);
+      border: 1px solid var(--border-hairline);
+      background: var(--surface-paper);
+      color: var(--ink-primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out);
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--border-strong);
+      background: var(--surface-subtle);
+    }
+
+    /* Nút bấm */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 10px 20px;
+      border-radius: var(--radius-btn);
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out), border-color 180ms var(--ease-out), transform 180ms var(--ease-out);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn--primary {
+      background-color: var(--accent-primary);
+      color: var(--accent-primary-ink);
+    }
+
+    .btn--primary:hover {
+      background-color: var(--accent-primary-hover);
+    }
+
+    .btn--ghost {
+      background-color: transparent;
+      border-color: var(--border-strong);
+      color: var(--ink-primary);
+    }
+
+    .btn--ghost:hover {
+      background-color: var(--surface-subtle);
+    }
+
+    .btn--subtle {
+      background-color: var(--surface-subtle);
+      border-color: var(--border-hairline);
+      color: var(--ink-primary);
+    }
+
+    .btn--subtle:hover {
+      border-color: var(--border-strong);
+    }
+
+    .btn--inline {
+      min-height: 36px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      background-color: var(--surface-card);
+      border-color: var(--border-hairline);
+      color: var(--ink-secondary);
+    }
+
+    .btn--inline:hover,
+    .btn--inline[aria-pressed="true"] {
+      color: var(--ink-primary);
+      border-color: var(--accent-primary);
+      background-color: var(--accent-soft);
+    }
+
+    .btn--sm {
+      min-height: 40px;
+      padding: 8px 14px;
+      font-size: 0.83rem;
+    }
+
+    .btn--full {
+      width: 100%;
+    }
+
+    .btn--pager {
+      background-color: var(--surface-card);
+      border-color: var(--border-hairline);
+      color: var(--ink-primary);
+    }
+
+    .btn--pager:hover:not(:disabled) {
+      border-color: var(--accent-primary);
+      background-color: var(--accent-soft);
+    }
+
+    .btn--pager:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    /* Trang bìa tối ưu cho khung nhúng Google Sites */
+    .cover-stage {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 20px 44px;
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cover-card {
+      width: 100%;
+      background: var(--surface-paper);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-book);
+      box-shadow: var(--shadow-book);
+      padding: 36px;
+      animation: pageFadeIn 320ms var(--ease-out);
+    }
+
+    .cover-card__grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 36px;
+      align-items: stretch;
+    }
+
+    .cover-card__editorial {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .cover-kicker {
+      margin: 0 0 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+    }
+
+    .cover-issue {
+      margin: 0 0 20px;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+    }
+
+    .cover-title {
+      margin: 0 0 14px;
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 4.4vw, 3.95rem);
+      line-height: 1.02;
+      font-weight: 700;
+      color: var(--ink-primary);
+      text-wrap: balance;
+    }
+
+    .cover-title__line {
+      display: block;
+      letter-spacing: 0.04em;
+      font-size: 0.62em;
+      font-family: var(--font-body);
+      font-weight: 700;
+      color: var(--accent-rose);
+      margin-bottom: 6px;
+    }
+
+    .cover-title__italic {
+      display: block;
+      font-style: italic;
+    }
+
+    .cover-course {
+      margin: 0 0 22px;
+      font-size: 1.03rem;
+      color: var(--ink-secondary);
+      max-width: 48ch;
+    }
+
+    .cover-divider {
+      height: 1px;
+      background: var(--border-hairline);
+      margin-bottom: 20px;
+    }
+
+    .cover-meta {
+      margin: 0 0 28px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 20px;
+    }
+
+    .cover-meta__row dt {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      margin-bottom: 2px;
+    }
+
+    .cover-meta__row dd {
+      margin: 0;
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+
+    .cover-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .cover-card__visual {
+      display: flex;
+    }
+
+    .cover-frame {
+      margin: 0;
+      width: 100%;
+      min-height: 410px;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface-spine);
+      border: 1px solid var(--border-hairline);
+      border-radius: calc(var(--radius-book) - 6px);
+      overflow: hidden;
+    }
+
+    .cover-frame__img {
+      width: 100%;
+      flex: 1;
+      min-height: 340px;
+      object-fit: cover;
+    }
+
+    .cover-frame__img.is-hidden {
+      display: none;
+    }
+
+    .cover-frame__caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 18px;
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      background: var(--surface-paper);
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    /* Placeholder */
+    .media-placeholder {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 26px 18px;
+      background: linear-gradient(145deg, var(--surface-spine) 0%, var(--surface-subtle) 100%);
+      color: var(--accent-primary);
+    }
+
+    .media-placeholder.is-visible {
+      display: flex;
+      flex: 1;
+    }
+
+    .media-placeholder--cover {
+      min-height: 360px;
+    }
+
+    .media-placeholder--evidence {
+      min-height: 205px;
+    }
+
+    .media-placeholder--avatar {
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+    }
+
+    .media-placeholder__art {
+      width: 160px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .media-placeholder__art--sm {
+      width: 128px;
+      margin-bottom: 8px;
+    }
+
+    .media-placeholder__title {
+      margin: 0 0 4px;
+      font-weight: 600;
+      font-size: 0.94rem;
+      color: var(--ink-primary);
+    }
+
+    .media-placeholder__hint {
+      margin: 0 0 12px;
+      font-size: 0.81rem;
+      color: var(--ink-secondary);
+    }
+
+    .media-placeholder__upload {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 14px;
+      border-radius: var(--radius-btn);
+      border: 1px solid var(--border-strong);
+      background: var(--surface-paper);
+      color: var(--ink-primary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .media-placeholder__upload:hover {
+      background: var(--accent-soft);
+    }
+
+    .avatar-monogram {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--accent-primary);
+      line-height: 1;
+    }
+
+    .avatar-path-hint {
+      margin: 6px 0 0;
+      font-size: 0.74rem;
+      color: var(--ink-muted);
+    }
+
+    /* Khung sách bên trong */
+    .magazine-shell {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 20px 20px 44px;
+    }
+
+    .mobile-book-bar {
+      display: none;
+    }
+
+    .magazine-book {
+      display: grid;
+      grid-template-columns: 292px minmax(0, 1fr);
+      background: var(--surface-paper);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-book);
+      box-shadow: var(--shadow-book);
+      overflow: hidden;
+      min-height: 740px;
+    }
+
+    .book-spine {
+      background: var(--surface-spine);
+      border-right: 1px solid var(--border-hairline);
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .book-spine__header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .book-spine__label {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--ink-primary);
+    }
+
+    .book-spine__sub {
+      margin: 2px 0 0;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+    }
+
+    .book-spine__close {
+      display: none;
+    }
+
+    .author-card {
+      background: var(--surface-paper);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 16px;
+      text-align: center;
+    }
+
+    .author-card__avatar-wrap {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--border-strong);
+      background: var(--surface-subtle);
+    }
+
+    .author-card__avatar {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .author-card__avatar.is-hidden {
+      display: none;
+    }
+
+    .author-card__role {
+      margin: 0 0 2px;
+      font-size: 0.74rem;
+      color: var(--ink-muted);
+    }
+
+    .author-card__name {
+      margin: 0 0 4px;
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+    }
+
+    .author-card__detail {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--ink-secondary);
+    }
+
+    .avatar-upload-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--accent-primary);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .toc {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex: 1;
+    }
+
+    .toc__heading {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+    }
+
+    .toc__group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .toc__group-label {
+      margin: 0 0 4px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+    }
+
+    .toc__item {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      text-align: left;
+      padding: 9px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--ink-secondary);
+      font-size: 0.85rem;
+      line-height: 1.38;
+      cursor: pointer;
+      transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out);
+    }
+
+    .toc__item:hover {
+      background: var(--surface-paper);
+      color: var(--ink-primary);
+    }
+
+    .toc__item.is-active {
+      background: var(--surface-paper);
+      border-color: var(--border-strong);
+      color: var(--ink-primary);
+      font-weight: 600;
+    }
+
+    .toc__num {
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+      font-size: 0.76rem;
+      color: var(--accent-primary);
+      padding-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .toc__text {
+      flex: 1;
+    }
+
+    .book-spine__footer {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    /* Cột nội dung chính */
+    .book-page-column {
+      display: flex;
+      flex-direction: column;
+      padding: 26px 32px 24px;
+      min-width: 0;
+    }
+
+    .reading-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .reading-bar__meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      color: var(--ink-muted);
+    }
+
+    .reading-bar__chapter {
+      font-weight: 600;
+      color: var(--accent-primary);
+    }
+
+    .reading-bar__page {
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .reading-bar__tools {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .reading-progress {
+      width: 100%;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--surface-subtle);
+      overflow: hidden;
+    }
+
+    .reading-progress__fill {
+      height: 100%;
+      width: 12.5%;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-rose));
+      transition: width 280ms var(--ease-out);
+    }
+
+    .edit-banner {
+      margin-bottom: 20px;
+      padding: 12px 16px;
+      border-radius: var(--radius-card);
+      border: 1px dashed var(--accent-primary);
+      background: var(--accent-soft);
+      font-size: 0.85rem;
+      color: var(--ink-primary);
+    }
+
+    .edit-banner p {
+      margin: 0;
+    }
+
+    .pages-viewport {
+      flex: 1;
+    }
+
+    .magazine-page {
+      display: none;
+    }
+
+    .magazine-page.is-active {
+      display: block;
+      animation: pageFadeIn 280ms var(--ease-out);
+    }
+
+    @keyframes pageFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .page-header {
+      margin-bottom: 24px;
+    }
+
+    .page-header__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 6px;
+    }
+
+    .page-kicker {
+      margin: 0;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent-rose);
+    }
+
+    .page-folio {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--accent-primary);
+      opacity: 0.72;
+      line-height: 1;
+    }
+
+    .page-title {
+      margin: 0 0 10px;
+      font-family: var(--font-display);
+      font-size: clamp(1.85rem, 2.7vw, 2.5rem);
+      line-height: 1.15;
+      font-weight: 700;
+      color: var(--ink-primary);
+      text-wrap: balance;
+    }
+
+    .page-subtitle {
+      margin: 0;
+      font-size: 0.86rem;
+      color: var(--ink-muted);
+    }
+
+    .page-lead {
+      margin: 0;
+      max-width: 68ch;
+      color: var(--ink-secondary);
+    }
+
+    .drop-cap::first-letter {
+      font-family: var(--font-display);
+      font-size: 3.1rem;
+      font-weight: 700;
+      line-height: 0.88;
+      float: left;
+      margin: 4px 10px 0 0;
+      color: var(--accent-primary);
+    }
+
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .editorial-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .editorial-card--wide {
+      grid-column: 1 / -1;
+    }
+
+    .editorial-card__title {
+      margin: 0 0 10px;
+      font-family: var(--font-display);
+      font-size: 1.32rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+    }
+
+    .editorial-card p {
+      margin: 0 0 10px;
+    }
+
+    .editorial-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .editorial-list,
+    .editorial-steps {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink-secondary);
+    }
+
+    .editorial-list li,
+    .editorial-steps li {
+      margin-bottom: 8px;
+    }
+
+    .editorial-list li:last-child,
+    .editorial-steps li:last-child {
+      margin-bottom: 0;
+    }
+
+    .placeholder-note {
+      color: var(--ink-muted);
+      font-style: italic;
+    }
+
+    body.is-editing .editable-block {
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px dashed var(--accent-primary);
+      background: var(--surface-paper);
+      cursor: text;
+    }
+
+    body.is-editing .editable-block:focus {
+      outline: 2px solid var(--accent-primary);
+    }
+
+    .assignment-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(255px, 0.85fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .assignment-main {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .assignment-media {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .media-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 18px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .media-card__title {
+      margin: 0 0 10px;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+    }
+
+    .media-card__desc {
+      margin: 0 0 14px;
+      font-size: 0.85rem;
+      color: var(--ink-secondary);
+    }
+
+    .media-card__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .evidence-figure {
+      margin: 0;
+      border: 1px solid var(--border-hairline);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--surface-paper);
+    }
+
+    .evidence-figure__img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+
+    .evidence-figure__img.is-hidden {
+      display: none;
+    }
+
+    .evidence-figure__caption {
+      padding: 9px 12px;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .product-link-row {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-hairline);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.86rem;
+    }
+
+    .product-link-row__label {
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+
+    .product-link {
+      color: var(--accent-primary);
+      word-break: break-all;
+    }
+
+    .product-link.is-empty {
+      color: var(--ink-muted);
+      text-decoration: none;
+      font-style: italic;
+    }
+
+    .link-edit-btn {
+      margin-left: 6px;
+      padding: 3px 9px;
+      border-radius: 6px;
+      border: 1px solid var(--border-strong);
+      background: var(--surface-paper);
+      color: var(--accent-primary);
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .link-inline-editor {
+      margin-top: 6px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .link-inline-input {
+      padding: 5px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border-strong);
+      background: var(--surface-paper);
+      color: var(--ink-primary);
+      font-size: 0.82rem;
+      min-width: 220px;
+    }
+
+    .drive-inline-editor {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border-hairline);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .drive-inline-label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
+    }
+
+    .drive-inline-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .editorial-quote {
+      margin: 24px 0 0;
+      padding: 20px 24px;
+      border-top: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+      text-align: center;
+    }
+
+    .editorial-quote p {
+      margin: 0 0 8px;
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-style: italic;
+      color: var(--ink-primary);
+      text-wrap: balance;
+    }
+
+    .editorial-quote footer {
+      font-size: 0.84rem;
+      color: var(--ink-muted);
+    }
+
+    .page-pager {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .page-pager__indicator {
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+    }
+
+    .book-footer {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 45;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 42px;
+      padding: 9px 16px;
+      border-radius: var(--radius-btn);
+      border: 1px solid var(--border-strong);
+      background: var(--surface-paper);
+      color: var(--ink-primary);
+      font-size: 0.84rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-card);
+      cursor: pointer;
+    }
+
+    .back-to-top:hover {
+      background: var(--accent-primary);
+      color: var(--accent-primary-ink);
+      border-color: var(--accent-primary);
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(15, 12, 24, 0.72);
+      backdrop-filter: blur(6px);
+    }
+
+    .modal-dialog {
+      width: 100%;
+      background: var(--surface-paper);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-book);
+      box-shadow: var(--shadow-modal);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-dialog--lightbox {
+      max-width: 920px;
+      max-height: 90vh;
+    }
+
+    .modal-dialog--pdf {
+      max-width: 980px;
+      height: 86vh;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .modal-header__actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+    }
+
+    .modal-subtitle {
+      margin: 2px 0 0;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+    }
+
+    .modal-close {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-btn);
+      border: 1px solid var(--border-hairline);
+      background: var(--surface-card);
+      color: var(--ink-primary);
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      background: var(--surface-subtle);
+    }
+
+    .modal-body {
+      padding: 20px;
+      overflow: auto;
+      flex: 1;
+    }
+
+    .modal-body--center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-body--pdf {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 74vh;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+
+    .lightbox-empty,
+    .pdf-empty {
+      padding: 36px 24px;
+      text-align: center;
+      margin: auto;
+      max-width: 480px;
+    }
+
+    .lightbox-empty__title,
+    .pdf-empty__title {
+      margin: 0 0 8px;
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+    }
+
+    .lightbox-empty__desc,
+    .pdf-empty__desc {
+      margin: 0 0 18px;
+      color: var(--ink-secondary);
+    }
+
+    .pdf-iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      flex: 1;
+    }
+
+    .drawer-scrim {
+      position: fixed;
+      inset: 0;
+      z-index: 55;
+      background: rgba(15, 12, 24, 0.52);
+    }
+
+    @media (max-width: 1024px) {
+      .cover-card {
+        padding: 26px;
+      }
+
+      .cover-card__grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .cover-frame {
+        min-height: 300px;
+      }
+
+      .magazine-book {
+        grid-template-columns: 1fr;
+      }
+
+      .mobile-book-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+
+      .mobile-book-bar__status {
+        font-family: var(--font-mono);
+        font-size: 0.82rem;
+        color: var(--ink-muted);
+      }
+
+      .book-spine {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: min(320px, 86vw);
+        z-index: 60;
+        overflow-y: auto;
+        transform: translateX(-105%);
+        transition: transform 240ms var(--ease-out);
+        border-right: 1px solid var(--border-strong);
+      }
+
+      .book-spine.is-open {
+        transform: translateX(0);
+      }
+
+      .book-spine__close {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        border: 1px solid var(--border-hairline);
+        background: var(--surface-paper);
+        color: var(--ink-primary);
+        cursor: pointer;
+      }
+
+      .assignment-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --topbar-height: 54px;
+      }
+
+      .topbar__inner {
+        padding: 0 14px;
+        gap: 10px;
+      }
+
+      .topbar__brand {
+        font-size: 1.35rem;
+      }
+
+      .topbar__nav {
+        display: none;
+      }
+
+      .theme-toggle {
+        min-height: 38px;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+
+      .cover-stage {
+        padding: 16px 12px 32px;
+        min-height: auto;
+      }
+
+      .cover-card {
+        padding: 20px;
+      }
+
+      .cover-meta {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .magazine-shell {
+        padding: 12px 10px 32px;
+      }
+
+      .book-page-column {
+        padding: 20px 16px;
+      }
+
+      .editorial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-pager {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .page-pager__indicator {
+        width: 100%;
+        text-align: center;
+        order: -1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media print {
+      .ambient-backdrop,
+      .topbar,
+      .mobile-book-bar,
+      .book-spine,
+      .reading-bar__tools,
+      .page-pager,
+      .back-to-top,
+      .media-card__actions,
+      .edit-banner {
+        display: none !important;
+      }
+
+      body {
+        background: #ffffff;
+        color: #000000;
+      }
+
+      .magazine-book {
+        display: block;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .magazine-page {
+        display: block !important;
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-backdrop" aria-hidden="true">
+    <div class="ambient-orb ambient-orb--lavender"></div>
+    <div class="ambient-orb ambient-orb--rose"></div>
+    <div class="ambient-orb ambient-orb--sky"></div>
+  </div>
+
+  <!-- Thanh điều hướng trên cùng -->
+  <header class="topbar" role="banner">
+    <div class="topbar__inner">
+      <a href="#trang-bia" class="topbar__brand" id="brand-home-link">Digital Portfolio</a>
+
+      <nav class="topbar__nav" aria-label="Điều hướng chương chính">
+        <button type="button" class="topbar__link is-active" data-nav-target="cover">Trang bìa</button>
+        <button type="button" class="topbar__link" data-nav-target="page" data-page-index="0">Chương 1</button>
+        <button type="button" class="topbar__link" data-nav-target="page" data-page-index="1">Chương 2</button>
+        <button type="button" class="topbar__link" data-nav-target="page" data-page-index="7">Chương 3</button>
+      </nav>
+
+      <div class="topbar__actions">
+        <button type="button" class="theme-toggle" id="theme-toggle-btn" aria-label="Chuyển đổi chế độ sáng hoặc tối" aria-pressed="false">
+          <span class="theme-toggle__icon" id="theme-icon" aria-hidden="true">☀</span>
+          <span class="theme-toggle__label" id="theme-label">Giao diện tối</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="app-root">
+    <!-- ========== TRANG BÌA ========== -->
+    <section id="cover-view" class="cover-stage" aria-label="Trang bìa Digital Portfolio">
+      <article class="cover-card">
+        <div class="cover-card__grid">
+          <div class="cover-card__editorial">
+            <p class="cover-kicker">Đại học Khoa học Xã hội và Nhân văn – ĐHQGHN (USSH)</p>
+            <p class="cover-issue">Ấn phẩm học tập cá nhân · Năm học 2026</p>
+
+            <h1 class="cover-title">
+              <span class="cover-title__line">DIGITAL</span>
+              <span class="cover-title__italic">Portfolio</span>
+            </h1>
+
+            <p class="cover-course">
+              Môn học: <strong>Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo</strong>
+            </p>
+
+            <div class="cover-divider" aria-hidden="true"></div>
+
+            <dl class="cover-meta">
+              <div class="cover-meta__row">
+                <dt>Sinh viên thực hiện</dt>
+                <dd>Đỗ Nguyễn Phương Anh</dd>
+              </div>
+              <div class="cover-meta__row">
+                <dt>Ngành học &amp; Khóa</dt>
+                <dd>Quản lý thông tin – K70</dd>
+              </div>
+              <div class="cover-meta__row">
+                <dt>Đơn vị đào tạo</dt>
+                <dd>Trường ĐHKHXH&amp;NV – ĐHQGHN</dd>
+              </div>
+              <div class="cover-meta__row">
+                <dt>Năm học</dt>
+                <dd>2026</dd>
+              </div>
+            </dl>
+
+            <div class="cover-actions">
+              <button type="button" class="btn btn--primary" id="open-portfolio-btn">
+                <span>Lật mở Portfolio</span>
+                <span aria-hidden="true">→</span>
+              </button>
+              <button type="button" class="btn btn--ghost" id="cover-toc-btn">
+                Xem Mục lục
+              </button>
+            </div>
+          </div>
+
+          <div class="cover-card__visual">
+            <figure class="cover-frame" data-image-slot="cover">
+              <img alt="Ảnh bìa Digital Portfolio của Đỗ Nguyễn Phương Anh" class="cover-frame__img is-hidden" data-managed-img="cover">
+              <div class="media-placeholder media-placeholder--cover is-visible" data-placeholder-for="cover">
+                <svg class="media-placeholder__art" viewBox="0 0 240 280" fill="none" aria-hidden="true">
+                  <rect x="18" y="20" width="204" height="240" rx="14" stroke="currentColor" stroke-width="1.4" stroke-dasharray="5 5" opacity="0.45"/>
+                  <circle cx="120" cy="112" r="46" fill="currentColor" opacity="0.1"/>
+                  <path d="M52 216C74 176 102 162 126 176C148 189 164 168 188 148V232H52V216Z" fill="currentColor" opacity="0.16"/>
+                  <circle cx="160" cy="86" r="14" stroke="currentColor" stroke-width="1.5" opacity="0.45"/>
+                </svg>
+                <p class="media-placeholder__title">Khung ảnh bìa tạp chí</p>
+                <p class="media-placeholder__hint">Gắn link ảnh Google Drive trong <code>MEDIA_CONFIG.images.cover</code></p>
+                <label class="media-placeholder__upload">
+                  <span>Xem thử ảnh từ máy</span>
+                  <input type="file" accept="image/*" class="sr-only" data-preview-upload="cover">
+                </label>
+              </div>
+              <figcaption class="cover-frame__caption">
+                <span>Tập san số · Quản lý thông tin K70</span>
+                <span>USSH · 2026</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ========== KHUNG TẠP CHÍ BÊN TRONG ========== -->
+    <section id="magazine-view" class="magazine-shell" hidden aria-label="Nội dung Digital Portfolio">
+      <div class="mobile-book-bar">
+        <button type="button" class="btn btn--subtle" id="mobile-toc-toggle" aria-expanded="false" aria-controls="toc-sidebar">
+          <span aria-hidden="true">☰</span>
+          <span>Mục lục</span>
+        </button>
+        <span class="mobile-book-bar__status" id="mobile-page-status">Trang 1 / 8</span>
+      </div>
+
+      <div class="magazine-book">
+        <!-- Gáy sách & Mục lục -->
+        <aside id="toc-sidebar" class="book-spine" aria-label="Thông tin sinh viên và Mục lục">
+          <div class="book-spine__header">
+            <div class="book-spine__masthead">
+              <p class="book-spine__label">Digital Portfolio</p>
+              <p class="book-spine__sub">Tạp chí học tập cá nhân · 2026</p>
+            </div>
+            <button type="button" class="book-spine__close" id="mobile-toc-close" aria-label="Đóng mục lục">✕</button>
+          </div>
+
+          <div class="author-card">
+            <div class="author-card__avatar-wrap" data-image-slot="avatar">
+              <img alt="Chân dung sinh viên Đỗ Nguyễn Phương Anh" class="author-card__avatar is-hidden" data-managed-img="avatar">
+              <div class="media-placeholder media-placeholder--avatar is-visible" data-placeholder-for="avatar">
+                <span class="avatar-monogram" aria-hidden="true">PA</span>
+              </div>
+            </div>
+            <div class="author-card__info">
+              <p class="author-card__role">Sinh viên thực hiện</p>
+              <h2 class="author-card__name">Đỗ Nguyễn Phương Anh</h2>
+              <p class="author-card__detail">Quản lý thông tin – K70</p>
+              <p class="author-card__detail">ĐHKHXH&amp;NV – ĐHQGHN (USSH)</p>
+              <p class="avatar-path-hint">Ảnh chân dung: gắn link Drive trong <code>MEDIA_CONFIG</code></p>
+            </div>
+            <label class="avatar-upload-link">
+              <span>Thử ảnh đại diện</span>
+              <input type="file" accept="image/*" class="sr-only" data-preview-upload="avatar">
+            </label>
+          </div>
+
+          <nav class="toc" aria-label="Mục lục các chương và bài tập">
+            <p class="toc__heading">Mục lục</p>
+
+            <div class="toc__group">
+              <p class="toc__group-label">Chương 1 · Khởi đầu</p>
+              <button type="button" class="toc__item is-active" data-goto-page="0" aria-current="page">
+                <span class="toc__num">00</span>
+                <span class="toc__text">Giới thiệu bản thân &amp; Mục tiêu</span>
+              </button>
+            </div>
+
+            <div class="toc__group">
+              <p class="toc__group-label">Chương 2 · Bài tập &amp; Dự án</p>
+              <button type="button" class="toc__item" data-goto-page="1">
+                <span class="toc__num">01</span>
+                <span class="toc__text">Máy tính và các thiết bị ngoại vi</span>
+              </button>
+              <button type="button" class="toc__item" data-goto-page="2">
+                <span class="toc__num">02</span>
+                <span class="toc__text">Khai thác dữ liệu và thông tin</span>
+              </button>
+              <button type="button" class="toc__item" data-goto-page="3">
+                <span class="toc__num">03</span>
+                <span class="toc__text">Tổng quan về trí tuệ nhân tạo</span>
+              </button>
+              <button type="button" class="toc__item" data-goto-page="4">
+                <span class="toc__num">04</span>
+                <span class="toc__text">Giao tiếp và hợp tác trong môi trường số</span>
+              </button>
+              <button type="button" class="toc__item" data-goto-page="5">
+                <span class="toc__num">05</span>
+                <span class="toc__text">Sáng tạo nội dung số</span>
+              </button>
+              <button type="button" class="toc__item" data-goto-page="6">
+                <span class="toc__num">06</span>
+                <span class="toc__text">An toàn và liêm chính học thuật trong môi trường số</span>
+              </button>
+            </div>
+
+            <div class="toc__group">
+              <p class="toc__group-label">Chương 3 · Tổng kết</p>
+              <button type="button" class="toc__item" data-goto-page="7">
+                <span class="toc__num">07</span>
+                <span class="toc__text">Tổng kết và phản ánh</span>
+              </button>
+            </div>
+          </nav>
+
+          <div class="book-spine__footer">
+            <button type="button" class="btn btn--subtle btn--full" id="back-to-cover-btn">
+              <span aria-hidden="true">←</span>
+              <span>Quay lại Trang bìa</span>
+            </button>
+            <button type="button" class="btn btn--subtle btn--full" id="print-portfolio-btn">
+              <span aria-hidden="true">⎙</span>
+              <span>In / Lưu bản PDF</span>
+            </button>
+          </div>
+        </aside>
+
+        <!-- Trang nội dung -->
+        <div class="book-page-column" id="book-page-scroll">
+          <div class="reading-bar">
+            <div class="reading-bar__meta">
+              <span class="reading-bar__chapter" id="current-chapter-label">Chương 1 · Giới thiệu</span>
+              <span class="reading-bar__sep" aria-hidden="true">·</span>
+              <span class="reading-bar__page" id="reading-page-counter">Trang 1 / 8 · 13%</span>
+            </div>
+
+            <div class="reading-bar__tools">
+              <button type="button" class="btn btn--inline" id="toggle-edit-mode-btn" aria-pressed="false">
+                <span id="edit-mode-label">Chỉnh sửa nhanh</span>
+              </button>
+              <button type="button" class="btn btn--inline" id="reset-edits-btn" hidden>
+                Khôi phục mẫu
+              </button>
+            </div>
+
+            <div class="reading-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="13" aria-label="Tiến trình đọc Digital Portfolio">
+              <div class="reading-progress__fill" id="reading-progress-fill"></div>
+            </div>
+          </div>
+
+          <div class="edit-banner" id="edit-mode-banner" hidden>
+            <p>
+              <strong>Chế độ chỉnh sửa nhanh đang bật:</strong> Bạn có thể nhấn trực tiếp vào các vùng có viền nét đứt để chỉnh sửa nội dung hoặc dán link ảnh/PDF Google Drive. Khi nhúng trên Google Sites, để lưu vĩnh viễn cho mọi người xem, hãy cập nhật chữ và link Drive trực tiếp trong mã HTML trước khi dán vào mục <em>Mã nhúng</em>.
+            </p>
+          </div>
+
+          <div class="pages-viewport" id="pages-viewport">
+            <!-- TRANG 1 (INDEX 0): CHƯƠNG 1 -->
+            <article class="magazine-page is-active" data-page="0" data-chapter-label="Chương 1 · Giới thiệu">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 1 · Hồ sơ mở đầu</p>
+                  <span class="page-folio" aria-hidden="true">00</span>
+                </div>
+                <h2 class="page-title">Giới thiệu &amp; Định hướng học tập</h2>
+                <p class="page-lead drop-cap">
+                  Chào mừng bạn đến với cuốn tạp chí số cá nhân của Đỗ Nguyễn Phương Anh. Đây là không gian tổng hợp hành trình học tập, thực hành công nghệ số và ứng dụng trí tuệ nhân tạo trong học phần Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo tại Trường Đại học Khoa học Xã hội và Nhân văn – ĐHQGHN.
+                </p>
+              </header>
+
+              <div class="editorial-grid">
+                <section class="editorial-card editorial-card--wide">
+                  <h3 class="editorial-card__title">1. Giới thiệu bản thân</h3>
+                  <div class="editable-block" data-edit-id="ch1-intro">
+                    <p>
+                      Tôi là <strong>Đỗ Nguyễn Phương Anh</strong>, sinh viên khóa K70 ngành <strong>Quản lý thông tin</strong> tại Trường Đại học Khoa học Xã hội và Nhân văn – Đại học Quốc gia Hà Nội (USSH).
+                    </p>
+                    <p class="placeholder-note">
+                      [Cần bổ sung: Hãy viết thêm 3–5 câu giới thiệu về tính cách, thế mạnh cá nhân, hoặc lý do bạn chọn theo học ngành Quản lý thông tin tại USSH.]
+                    </p>
+                  </div>
+                </section>
+
+                <section class="editorial-card">
+                  <h3 class="editorial-card__title">2. Sở thích và định hướng học tập</h3>
+                  <div class="editable-block" data-edit-id="ch1-interests">
+                    <ul class="editorial-list">
+                      <li><strong>Sở thích cá nhân:</strong> [Cần bổ sung: Ví dụ đọc sách, thiết kế trình bày tài liệu, tìm hiểu công cụ tổ chức tri thức số, nhiếp ảnh hoặc sáng tạo nội dung...]</li>
+                      <li><strong>Định hướng ngành học:</strong> Gắn kết nền tảng khoa học thông tin với năng lực tổ chức, phân tích và quản trị nguồn dữ liệu học thuật trong môi trường số hiện đại.</li>
+                    </ul>
+                  </div>
+                </section>
+
+                <section class="editorial-card">
+                  <h3 class="editorial-card__title">3. Mục tiêu phát triển kỹ năng công nghệ số &amp; AI</h3>
+                  <div class="editable-block" data-edit-id="ch1-goals">
+                    <ul class="editorial-list">
+                      <li>Làm chủ các thao tác quản lý hệ thống tệp, thiết bị và công cụ làm việc số hiệu quả.</li>
+                      <li>Nâng cao kỹ năng tìm kiếm, chọn lọc và đánh giá độ tin cậy của thông tin.</li>
+                      <li>Biết cách thiết kế câu lệnh (prompt) và ứng dụng AI có trách nhiệm, giữ vững tư duy phản biện và liêm chính học thuật.</li>
+                    </ul>
+                  </div>
+                </section>
+
+                <section class="editorial-card editorial-card--wide">
+                  <h3 class="editorial-card__title">4. Mục đích xây dựng Digital Portfolio</h3>
+                  <div class="editable-block" data-edit-id="ch1-purpose">
+                    <p>Digital Portfolio này được thiết kế như một cuốn tạp chí học tập cá nhân nhằm:</p>
+                    <ul class="editorial-list">
+                      <li>Hệ thống hóa toàn bộ 06 bài thực hành và dự án của môn học theo cấu trúc rõ ràng, dễ tra cứu.</li>
+                      <li>Lưu trữ minh chứng học tập (hình ảnh thực hành, tệp báo cáo PDF, liên kết sản phẩm) tại một địa chỉ duy nhất.</li>
+                      <li>Ghi lại quá trình tự phản ánh, đánh giá sự tiến bộ của bản thân và tạo nền tảng hồ sơ năng lực số cho các học phần chuyên ngành tiếp theo.</li>
+                    </ul>
+                  </div>
+                </section>
+              </div>
+            </article>
+
+            <!-- TRANG 2 (INDEX 1): BÀI 1 -->
+            <article class="magazine-page" data-page="1" data-chapter-label="Chương 2 · Bài 01">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 2 · Các bài tập và dự án · Bài 01</p>
+                  <span class="page-folio" aria-hidden="true">01</span>
+                </div>
+                <h2 class="page-title">Máy tính và các thiết bị ngoại vi</h2>
+                <p class="page-subtitle">Khung lưu trữ hồ sơ thực hành · Ảnh &amp; PDF tích hợp qua Google Drive</p>
+              </header>
+
+              <div class="assignment-layout">
+                <div class="assignment-main">
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Mục tiêu bài tập</h3>
+                    <div class="editable-block" data-edit-id="b1-goal">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Nêu rõ mục tiêu của Bài 1 — ví dụ: hiểu cấu trúc phần cứng máy tính, phân loại thiết bị ngoại vi nhập/xuất, quản lý kết nối và tối ưu thao tác hệ thống theo yêu cầu giảng viên.]
+                      </p>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Nội dung và quy trình thực hiện</h3>
+                    <div class="editable-block" data-edit-id="b1-process">
+                      <ol class="editorial-steps">
+                        <li><strong>Bước 1 — Chuẩn bị &amp; phân tích đề bài:</strong> <span class="placeholder-note">[Cần bổ sung nội dung công việc chuẩn bị]</span></li>
+                        <li><strong>Bước 2 — Thực hành &amp; thao tác kỹ thuật:</strong> <span class="placeholder-note">[Cần bổ sung các bước thực hành chi tiết bạn đã thực hiện]</span></li>
+                        <li><strong>Bước 3 — Kiểm tra &amp; đóng gói sản phẩm:</strong> <span class="placeholder-note">[Cần bổ sung cách kiểm tra và hoàn thiện bài nộp]</span></li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Kết quả / Sản phẩm hoàn thành</h3>
+                    <div class="editable-block" data-edit-id="b1-result">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mô tả sản phẩm đầu ra bạn đã hoàn thành cho Bài 1 (bảng tổng hợp, sơ đồ thiết bị, báo cáo thực hành, tệp trình chiếu...).]
+                      </p>
+                    </div>
+                    <div class="product-link-row">
+                      <span class="product-link-row__label">Liên kết sản phẩm:</span>
+                      <div class="editable-link-wrap" data-link-id="b1-link">
+                        <a href="#" class="product-link is-empty" data-product-link="b1-link" target="_blank" rel="noopener noreferrer">[Chưa gắn liên kết — Dán link trong HTML hoặc Chế độ chỉnh sửa nhanh]</a>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Tự đánh giá &amp; Những điều học được</h3>
+                    <div class="editable-block" data-edit-id="b1-reflection">
+                      <ul class="editorial-list">
+                        <li><strong>Điểm hài lòng:</strong> <span class="placeholder-note">[Cần bổ sung phần tự nhận xét điểm làm tốt]</span></li>
+                        <li><strong>Điều cần cải thiện:</strong> <span class="placeholder-note">[Cần bổ sung hạn chế hoặc khó khăn gặp phải]</span></li>
+                        <li><strong>Bài học rút ra:</strong> <span class="placeholder-note">[Cần bổ sung kiến thức/kỹ năng bạn ghi nhớ sau bài tập này]</span></li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+
+                <aside class="assignment-media">
+                  <section class="media-card" data-media-slot="bai1">
+                    <h3 class="media-card__title">Ảnh minh chứng · Bài 01</h3>
+                    <figure class="evidence-figure" data-image-slot="bai1">
+                      <img alt="Ảnh minh chứng Bài 1: Máy tính và các thiết bị ngoại vi" class="evidence-figure__img is-hidden" data-managed-img="bai1">
+                      <div class="media-placeholder media-placeholder--evidence is-visible" data-placeholder-for="bai1">
+                        <svg class="media-placeholder__art media-placeholder__art--sm" viewBox="0 0 180 120" fill="none" aria-hidden="true">
+                          <rect x="12" y="12" width="156" height="96" rx="10" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.5"/>
+                          <circle cx="56" cy="46" r="12" fill="currentColor" opacity="0.16"/>
+                          <path d="M28 94L68 62L98 84L126 56L152 94H28Z" fill="currentColor" opacity="0.14"/>
+                        </svg>
+                        <p class="media-placeholder__title">Chưa có ảnh minh chứng</p>
+                        <p class="media-placeholder__hint">Gắn link Google Drive ở <code>MEDIA_CONFIG.images.bai1</code></p>
+                      </div>
+                      <figcaption class="evidence-figure__caption">Hình minh họa kết quả thực hành Bài 01</figcaption>
+                    </figure>
+
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-zoom-slot="bai1" data-zoom-title="Bài 01 — Máy tính và các thiết bị ngoại vi">
+                        Phóng to ảnh minh chứng
+                      </button>
+                      <label class="btn btn--subtle btn--sm">
+                        <span>Thử ảnh từ máy</span>
+                        <input type="file" accept="image/*" class="sr-only" data-preview-upload="bai1">
+                      </label>
+                    </div>
+                  </section>
+
+                  <section class="media-card" data-pdf-slot="bai1">
+                    <h3 class="media-card__title">Tệp báo cáo PDF</h3>
+                    <p class="media-card__desc">Tài liệu đính kèm từ Google Drive (<code>MEDIA_CONFIG.pdfs.bai1</code>)</p>
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-open-pdf-slot="bai1" data-pdf-title="Bài 01 — Máy tính và các thiết bị ngoại vi">
+                        Xem trước PDF
+                      </button>
+                      <a href="#" class="btn btn--subtle btn--sm" data-download-pdf-slot="bai1" target="_blank" rel="noopener noreferrer">
+                        Tải file PDF
+                      </a>
+                    </div>
+                  </section>
+                </aside>
+              </div>
+            </article>
+
+            <!-- TRANG 3 (INDEX 2): BÀI 2 -->
+            <article class="magazine-page" data-page="2" data-chapter-label="Chương 2 · Bài 02">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 2 · Các bài tập và dự án · Bài 02</p>
+                  <span class="page-folio" aria-hidden="true">02</span>
+                </div>
+                <h2 class="page-title">Khai thác dữ liệu và thông tin</h2>
+                <p class="page-subtitle">Khung lưu trữ hồ sơ thực hành · Ảnh &amp; PDF tích hợp qua Google Drive</p>
+              </header>
+
+              <div class="assignment-layout">
+                <div class="assignment-main">
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Mục tiêu bài tập</h3>
+                    <div class="editable-block" data-edit-id="b2-goal">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Nêu rõ mục tiêu của Bài 2 — ví dụ: kỹ năng tìm kiếm học thuật với toán tử nâng cao, đánh giá độ tin cậy nguồn tin, tổ chức và trích dẫn dữ liệu đúng chuẩn.]
+                      </p>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Nội dung và quy trình thực hiện</h3>
+                    <div class="editable-block" data-edit-id="b2-process">
+                      <ol class="editorial-steps">
+                        <li><strong>Bước 1 — Xác định từ khóa &amp; nguồn tin:</strong> <span class="placeholder-note">[Cần bổ sung từ khóa, cơ sở dữ liệu hoặc chủ đề bạn đã chọn]</span></li>
+                        <li><strong>Bước 2 — Truy xuất &amp; sàng lọc thông tin:</strong> <span class="placeholder-note">[Cần bổ sung tiêu chí đánh giá và công cụ khai thác]</span></li>
+                        <li><strong>Bước 3 — Tổng hợp &amp; trình bày kết quả:</strong> <span class="placeholder-note">[Cần bổ sung cách tổng hợp dữ liệu thành báo cáo]</span></li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Kết quả / Sản phẩm hoàn thành</h3>
+                    <div class="editable-block" data-edit-id="b2-result">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mô tả kết quả cụ thể của Bài 2 (bảng đánh giá nguồn tin, danh mục tài liệu tham khảo, biểu đồ thống kê dữ liệu...).]
+                      </p>
+                    </div>
+                    <div class="product-link-row">
+                      <span class="product-link-row__label">Liên kết sản phẩm:</span>
+                      <div class="editable-link-wrap" data-link-id="b2-link">
+                        <a href="#" class="product-link is-empty" data-product-link="b2-link" target="_blank" rel="noopener noreferrer">[Chưa gắn liên kết — Dán link trong HTML hoặc Chế độ chỉnh sửa nhanh]</a>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Tự đánh giá &amp; Những điều học được</h3>
+                    <div class="editable-block" data-edit-id="b2-reflection">
+                      <ul class="editorial-list">
+                        <li><strong>Điểm hài lòng:</strong> <span class="placeholder-note">[Cần bổ sung phần tự đánh giá]</span></li>
+                        <li><strong>Điều cần cải thiện:</strong> <span class="placeholder-note">[Cần bổ sung điểm còn thiếu sót]</span></li>
+                        <li><strong>Bài học rút ra:</strong> <span class="placeholder-note">[Cần bổ sung kinh nghiệm khai thác dữ liệu gắn với ngành Quản lý thông tin]</span></li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+
+                <aside class="assignment-media">
+                  <section class="media-card" data-media-slot="bai2">
+                    <h3 class="media-card__title">Ảnh minh chứng · Bài 02</h3>
+                    <figure class="evidence-figure" data-image-slot="bai2">
+                      <img alt="Ảnh minh chứng Bài 2: Khai thác dữ liệu và thông tin" class="evidence-figure__img is-hidden" data-managed-img="bai2">
+                      <div class="media-placeholder media-placeholder--evidence is-visible" data-placeholder-for="bai2">
+                        <svg class="media-placeholder__art media-placeholder__art--sm" viewBox="0 0 180 120" fill="none" aria-hidden="true">
+                          <rect x="12" y="12" width="156" height="96" rx="10" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.5"/>
+                          <circle cx="56" cy="46" r="12" fill="currentColor" opacity="0.16"/>
+                          <path d="M28 94L68 62L98 84L126 56L152 94H28Z" fill="currentColor" opacity="0.14"/>
+                        </svg>
+                        <p class="media-placeholder__title">Chưa có ảnh minh chứng</p>
+                        <p class="media-placeholder__hint">Gắn link Google Drive ở <code>MEDIA_CONFIG.images.bai2</code></p>
+                      </div>
+                      <figcaption class="evidence-figure__caption">Hình minh họa kết quả thực hành Bài 02</figcaption>
+                    </figure>
+
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-zoom-slot="bai2" data-zoom-title="Bài 02 — Khai thác dữ liệu và thông tin">
+                        Phóng to ảnh minh chứng
+                      </button>
+                      <label class="btn btn--subtle btn--sm">
+                        <span>Thử ảnh từ máy</span>
+                        <input type="file" accept="image/*" class="sr-only" data-preview-upload="bai2">
+                      </label>
+                    </div>
+                  </section>
+
+                  <section class="media-card" data-pdf-slot="bai2">
+                    <h3 class="media-card__title">Tệp báo cáo PDF</h3>
+                    <p class="media-card__desc">Tài liệu đính kèm từ Google Drive (<code>MEDIA_CONFIG.pdfs.bai2</code>)</p>
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-open-pdf-slot="bai2" data-pdf-title="Bài 02 — Khai thác dữ liệu và thông tin">
+                        Xem trước PDF
+                      </button>
+                      <a href="#" class="btn btn--subtle btn--sm" data-download-pdf-slot="bai2" target="_blank" rel="noopener noreferrer">
+                        Tải file PDF
+                      </a>
+                    </div>
+                  </section>
+                </aside>
+              </div>
+            </article>
+
+            <!-- TRANG 4 (INDEX 3): BÀI 3 -->
+            <article class="magazine-page" data-page="3" data-chapter-label="Chương 2 · Bài 03">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 2 · Các bài tập và dự án · Bài 03</p>
+                  <span class="page-folio" aria-hidden="true">03</span>
+                </div>
+                <h2 class="page-title">Tổng quan về trí tuệ nhân tạo</h2>
+                <p class="page-subtitle">Khung lưu trữ hồ sơ thực hành · Ảnh &amp; PDF tích hợp qua Google Drive</p>
+              </header>
+
+              <div class="assignment-layout">
+                <div class="assignment-main">
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Mục tiêu bài tập</h3>
+                    <div class="editable-block" data-edit-id="b3-goal">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mục tiêu của Bài 3 — ví dụ: nắm vững khái niệm cốt lõi về AI/Generative AI, thực hành thiết kế prompt hiệu quả và kiểm chứng phản hồi từ mô hình AI.]
+                      </p>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Nội dung và quy trình thực hiện</h3>
+                    <div class="editable-block" data-edit-id="b3-process">
+                      <ol class="editorial-steps">
+                        <li><strong>Bước 1 — Tìm hiểu công cụ &amp; nguyên lý AI:</strong> <span class="placeholder-note">[Cần bổ sung công cụ AI bạn đã trải nghiệm]</span></li>
+                        <li><strong>Bước 2 — Xây dựng kịch bản &amp; câu lệnh (Prompt):</strong> <span class="placeholder-note">[Cần bổ sung quy trình thử nghiệm và tinh chỉnh prompt]</span></li>
+                        <li><strong>Bước 3 — Đối chiếu, hiệu chỉnh thông tin:</strong> <span class="placeholder-note">[Cần bổ sung cách bạn kiểm chứng độ chính xác của kết quả AI]</span></li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Kết quả / Sản phẩm hoàn thành</h3>
+                    <div class="editable-block" data-edit-id="b3-result">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mô tả kết quả Bài 3 (bộ prompt mẫu, bảng so sánh công cụ AI, sản phẩm tổng hợp từ thực hành...).]
+                      </p>
+                    </div>
+                    <div class="product-link-row">
+                      <span class="product-link-row__label">Liên kết sản phẩm:</span>
+                      <div class="editable-link-wrap" data-link-id="b3-link">
+                        <a href="#" class="product-link is-empty" data-product-link="b3-link" target="_blank" rel="noopener noreferrer">[Chưa gắn liên kết — Dán link trong HTML hoặc Chế độ chỉnh sửa nhanh]</a>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Tự đánh giá &amp; Những điều học được</h3>
+                    <div class="editable-block" data-edit-id="b3-reflection">
+                      <ul class="editorial-list">
+                        <li><strong>Điểm hài lòng:</strong> <span class="placeholder-note">[Cần bổ sung nhận xét cá nhân]</span></li>
+                        <li><strong>Điều cần cải thiện:</strong> <span class="placeholder-note">[Cần bổ sung hạn chế khi làm việc với AI]</span></li>
+                        <li><strong>Bài học rút ra:</strong> <span class="placeholder-note">[Cần bổ sung hiểu biết mới về giới hạn và tiềm năng của AI]</span></li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+
+                <aside class="assignment-media">
+                  <section class="media-card" data-media-slot="bai3">
+                    <h3 class="media-card__title">Ảnh minh chứng · Bài 03</h3>
+                    <figure class="evidence-figure" data-image-slot="bai3">
+                      <img alt="Ảnh minh chứng Bài 3: Tổng quan về trí tuệ nhân tạo" class="evidence-figure__img is-hidden" data-managed-img="bai3">
+                      <div class="media-placeholder media-placeholder--evidence is-visible" data-placeholder-for="bai3">
+                        <svg class="media-placeholder__art media-placeholder__art--sm" viewBox="0 0 180 120" fill="none" aria-hidden="true">
+                          <rect x="12" y="12" width="156" height="96" rx="10" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.5"/>
+                          <circle cx="56" cy="46" r="12" fill="currentColor" opacity="0.16"/>
+                          <path d="M28 94L68 62L98 84L126 56L152 94H28Z" fill="currentColor" opacity="0.14"/>
+                        </svg>
+                        <p class="media-placeholder__title">Chưa có ảnh minh chứng</p>
+                        <p class="media-placeholder__hint">Gắn link Google Drive ở <code>MEDIA_CONFIG.images.bai3</code></p>
+                      </div>
+                      <figcaption class="evidence-figure__caption">Hình minh họa kết quả thực hành Bài 03</figcaption>
+                    </figure>
+
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-zoom-slot="bai3" data-zoom-title="Bài 03 — Tổng quan về trí tuệ nhân tạo">
+                        Phóng to ảnh minh chứng
+                      </button>
+                      <label class="btn btn--subtle btn--sm">
+                        <span>Thử ảnh từ máy</span>
+                        <input type="file" accept="image/*" class="sr-only" data-preview-upload="bai3">
+                      </label>
+                    </div>
+                  </section>
+
+                  <section class="media-card" data-pdf-slot="bai3">
+                    <h3 class="media-card__title">Tệp báo cáo PDF</h3>
+                    <p class="media-card__desc">Tài liệu đính kèm từ Google Drive (<code>MEDIA_CONFIG.pdfs.bai3</code>)</p>
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-open-pdf-slot="bai3" data-pdf-title="Bài 03 — Tổng quan về trí tuệ nhân tạo">
+                        Xem trước PDF
+                      </button>
+                      <a href="#" class="btn btn--subtle btn--sm" data-download-pdf-slot="bai3" target="_blank" rel="noopener noreferrer">
+                        Tải file PDF
+                      </a>
+                    </div>
+                  </section>
+                </aside>
+              </div>
+            </article>
+
+            <!-- TRANG 5 (INDEX 4): BÀI 4 -->
+            <article class="magazine-page" data-page="4" data-chapter-label="Chương 2 · Bài 04">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 2 · Các bài tập và dự án · Bài 04</p>
+                  <span class="page-folio" aria-hidden="true">04</span>
+                </div>
+                <h2 class="page-title">Giao tiếp và hợp tác trong môi trường số</h2>
+                <p class="page-subtitle">Khung lưu trữ hồ sơ thực hành · Ảnh &amp; PDF tích hợp qua Google Drive</p>
+              </header>
+
+              <div class="assignment-layout">
+                <div class="assignment-main">
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Mục tiêu bài tập</h3>
+                    <div class="editable-block" data-edit-id="b4-goal">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mục tiêu của Bài 4 — ví dụ: sử dụng công cụ làm việc nhóm trực tuyến, chia sẻ quyền truy cập an toàn, quy tắc ứng xử số (Netiquette) khi phối hợp học tập.]
+                      </p>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Nội dung và quy trình thực hiện</h3>
+                    <div class="editable-block" data-edit-id="b4-process">
+                      <ol class="editorial-steps">
+                        <li><strong>Bước 1 — Thiết lập không gian làm việc nhóm:</strong> <span class="placeholder-note">[Cần bổ sung nền tảng sử dụng và vai trò của bạn trong nhóm]</span></li>
+                        <li><strong>Bước 2 — Phối hợp biên tập &amp; trao đổi trực tuyến:</strong> <span class="placeholder-note">[Cần bổ sung cách phân công, phản hồi và quản lý phiên bản]</span></li>
+                        <li><strong>Bước 3 — Tổng hợp kết quả hợp tác:</strong> <span class="placeholder-note">[Cần bổ sung cách hoàn thiện sản phẩm nhóm]</span></li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Kết quả / Sản phẩm hoàn thành</h3>
+                    <div class="editable-block" data-edit-id="b4-result">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mô tả kết quả hợp tác nhóm hoặc cá nhân đạt được trong Bài 4.]
+                      </p>
+                    </div>
+                    <div class="product-link-row">
+                      <span class="product-link-row__label">Liên kết sản phẩm:</span>
+                      <div class="editable-link-wrap" data-link-id="b4-link">
+                        <a href="#" class="product-link is-empty" data-product-link="b4-link" target="_blank" rel="noopener noreferrer">[Chưa gắn liên kết — Dán link trong HTML hoặc Chế độ chỉnh sửa nhanh]</a>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Tự đánh giá &amp; Những điều học được</h3>
+                    <div class="editable-block" data-edit-id="b4-reflection">
+                      <ul class="editorial-list">
+                        <li><strong>Điểm hài lòng:</strong> <span class="placeholder-note">[Cần bổ sung phần tự đánh giá vai trò và mức độ đóng góp]</span></li>
+                        <li><strong>Điều cần cải thiện:</strong> <span class="placeholder-note">[Cần bổ sung điểm có thể phối hợp tốt hơn]</span></li>
+                        <li><strong>Bài học rút ra:</strong> <span class="placeholder-note">[Cần bổ sung kỹ năng giao tiếp và quản trị công việc trực tuyến]</span></li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+
+                <aside class="assignment-media">
+                  <section class="media-card" data-media-slot="bai4">
+                    <h3 class="media-card__title">Ảnh minh chứng · Bài 04</h3>
+                    <figure class="evidence-figure" data-image-slot="bai4">
+                      <img alt="Ảnh minh chứng Bài 4: Giao tiếp và hợp tác trong môi trường số" class="evidence-figure__img is-hidden" data-managed-img="bai4">
+                      <div class="media-placeholder media-placeholder--evidence is-visible" data-placeholder-for="bai4">
+                        <svg class="media-placeholder__art media-placeholder__art--sm" viewBox="0 0 180 120" fill="none" aria-hidden="true">
+                          <rect x="12" y="12" width="156" height="96" rx="10" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.5"/>
+                          <circle cx="56" cy="46" r="12" fill="currentColor" opacity="0.16"/>
+                          <path d="M28 94L68 62L98 84L126 56L152 94H28Z" fill="currentColor" opacity="0.14"/>
+                        </svg>
+                        <p class="media-placeholder__title">Chưa có ảnh minh chứng</p>
+                        <p class="media-placeholder__hint">Gắn link Google Drive ở <code>MEDIA_CONFIG.images.bai4</code></p>
+                      </div>
+                      <figcaption class="evidence-figure__caption">Hình minh họa kết quả thực hành Bài 04</figcaption>
+                    </figure>
+
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-zoom-slot="bai4" data-zoom-title="Bài 04 — Giao tiếp và hợp tác trong môi trường số">
+                        Phóng to ảnh minh chứng
+                      </button>
+                      <label class="btn btn--subtle btn--sm">
+                        <span>Thử ảnh từ máy</span>
+                        <input type="file" accept="image/*" class="sr-only" data-preview-upload="bai4">
+                      </label>
+                    </div>
+                  </section>
+
+                  <section class="media-card" data-pdf-slot="bai4">
+                    <h3 class="media-card__title">Tệp báo cáo PDF</h3>
+                    <p class="media-card__desc">Tài liệu đính kèm từ Google Drive (<code>MEDIA_CONFIG.pdfs.bai4</code>)</p>
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-open-pdf-slot="bai4" data-pdf-title="Bài 04 — Giao tiếp và hợp tác trong môi trường số">
+                        Xem trước PDF
+                      </button>
+                      <a href="#" class="btn btn--subtle btn--sm" data-download-pdf-slot="bai4" target="_blank" rel="noopener noreferrer">
+                        Tải file PDF
+                      </a>
+                    </div>
+                  </section>
+                </aside>
+              </div>
+            </article>
+
+            <!-- TRANG 6 (INDEX 5): BÀI 5 -->
+            <article class="magazine-page" data-page="5" data-chapter-label="Chương 2 · Bài 05">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 2 · Các bài tập và dự án · Bài 05</p>
+                  <span class="page-folio" aria-hidden="true">05</span>
+                </div>
+                <h2 class="page-title">Sáng tạo nội dung số</h2>
+                <p class="page-subtitle">Khung lưu trữ hồ sơ thực hành · Ảnh &amp; PDF tích hợp qua Google Drive</p>
+              </header>
+
+              <div class="assignment-layout">
+                <div class="assignment-main">
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Mục tiêu bài tập</h3>
+                    <div class="editable-block" data-edit-id="b5-goal">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mục tiêu của Bài 5 — ví dụ: lên ý tưởng, biên tập và thiết kế ấn phẩm đa phương tiện (infographic, slide, video, hoặc bài viết số) có tính thẩm mỹ và bản quyền rõ ràng.]
+                      </p>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Nội dung và quy trình thực hiện</h3>
+                    <div class="editable-block" data-edit-id="b5-process">
+                      <ol class="editorial-steps">
+                        <li><strong>Bước 1 — Lên kịch bản &amp; bố cục nội dung:</strong> <span class="placeholder-note">[Cần bổ sung chủ đề sản phẩm và đối tượng người xem]</span></li>
+                        <li><strong>Bước 2 — Thiết kế &amp; sản xuất đa phương tiện:</strong> <span class="placeholder-note">[Cần bổ sung công cụ sáng tạo và nguồn tài nguyên hợp pháp đã dùng]</span></li>
+                        <li><strong>Bước 3 — Chỉnh sửa &amp; xuất bản sản phẩm:</strong> <span class="placeholder-note">[Cần bổ sung quy trình rà soát chất lượng]</span></li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Kết quả / Sản phẩm hoàn thành</h3>
+                    <div class="editable-block" data-edit-id="b5-result">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mô tả sản phẩm sáng tạo nội dung số của bạn (định dạng, nội dung truyền tải, điểm nhấn thiết kế).]
+                      </p>
+                    </div>
+                    <div class="product-link-row">
+                      <span class="product-link-row__label">Liên kết sản phẩm:</span>
+                      <div class="editable-link-wrap" data-link-id="b5-link">
+                        <a href="#" class="product-link is-empty" data-product-link="b5-link" target="_blank" rel="noopener noreferrer">[Chưa gắn liên kết — Dán link trong HTML hoặc Chế độ chỉnh sửa nhanh]</a>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Tự đánh giá &amp; Những điều học được</h3>
+                    <div class="editable-block" data-edit-id="b5-reflection">
+                      <ul class="editorial-list">
+                        <li><strong>Điểm hài lòng:</strong> <span class="placeholder-note">[Cần bổ sung điểm bạn tâm đắc ở sản phẩm]</span></li>
+                        <li><strong>Điều cần cải thiện:</strong> <span class="placeholder-note">[Cần bổ sung yếu tố muốn hoàn thiện hơn]</span></li>
+                        <li><strong>Bài học rút ra:</strong> <span class="placeholder-note">[Cần bổ sung bài học về tư duy thiết kế và truyền đạt thông tin]</span></li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+
+                <aside class="assignment-media">
+                  <section class="media-card" data-media-slot="bai5">
+                    <h3 class="media-card__title">Ảnh minh chứng · Bài 05</h3>
+                    <figure class="evidence-figure" data-image-slot="bai5">
+                      <img alt="Ảnh minh chứng Bài 5: Sáng tạo nội dung số" class="evidence-figure__img is-hidden" data-managed-img="bai5">
+                      <div class="media-placeholder media-placeholder--evidence is-visible" data-placeholder-for="bai5">
+                        <svg class="media-placeholder__art media-placeholder__art--sm" viewBox="0 0 180 120" fill="none" aria-hidden="true">
+                          <rect x="12" y="12" width="156" height="96" rx="10" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.5"/>
+                          <circle cx="56" cy="46" r="12" fill="currentColor" opacity="0.16"/>
+                          <path d="M28 94L68 62L98 84L126 56L152 94H28Z" fill="currentColor" opacity="0.14"/>
+                        </svg>
+                        <p class="media-placeholder__title">Chưa có ảnh minh chứng</p>
+                        <p class="media-placeholder__hint">Gắn link Google Drive ở <code>MEDIA_CONFIG.images.bai5</code></p>
+                      </div>
+                      <figcaption class="evidence-figure__caption">Hình minh họa kết quả thực hành Bài 05</figcaption>
+                    </figure>
+
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-zoom-slot="bai5" data-zoom-title="Bài 05 — Sáng tạo nội dung số">
+                        Phóng to ảnh minh chứng
+                      </button>
+                      <label class="btn btn--subtle btn--sm">
+                        <span>Thử ảnh từ máy</span>
+                        <input type="file" accept="image/*" class="sr-only" data-preview-upload="bai5">
+                      </label>
+                    </div>
+                  </section>
+
+                  <section class="media-card" data-pdf-slot="bai5">
+                    <h3 class="media-card__title">Tệp báo cáo PDF</h3>
+                    <p class="media-card__desc">Tài liệu đính kèm từ Google Drive (<code>MEDIA_CONFIG.pdfs.bai5</code>)</p>
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-open-pdf-slot="bai5" data-pdf-title="Bài 05 — Sáng tạo nội dung số">
+                        Xem trước PDF
+                      </button>
+                      <a href="#" class="btn btn--subtle btn--sm" data-download-pdf-slot="bai5" target="_blank" rel="noopener noreferrer">
+                        Tải file PDF
+                      </a>
+                    </div>
+                  </section>
+                </aside>
+              </div>
+            </article>
+
+            <!-- TRANG 7 (INDEX 6): BÀI 6 -->
+            <article class="magazine-page" data-page="6" data-chapter-label="Chương 2 · Bài 06">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 2 · Các bài tập và dự án · Bài 06</p>
+                  <span class="page-folio" aria-hidden="true">06</span>
+                </div>
+                <h2 class="page-title">An toàn và liêm chính học thuật trong môi trường số</h2>
+                <p class="page-subtitle">Khung lưu trữ hồ sơ thực hành · Ảnh &amp; PDF tích hợp qua Google Drive</p>
+              </header>
+
+              <div class="assignment-layout">
+                <div class="assignment-main">
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Mục tiêu bài tập</h3>
+                    <div class="editable-block" data-edit-id="b6-goal">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mục tiêu của Bài 6 — ví dụ: nhận diện rủi ro bảo mật dữ liệu cá nhân, hiểu quy định trích dẫn và minh bạch việc sử dụng AI trong nghiên cứu học thuật.]
+                      </p>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Nội dung và quy trình thực hiện</h3>
+                    <div class="editable-block" data-edit-id="b6-process">
+                      <ol class="editorial-steps">
+                        <li><strong>Bước 1 — Phân tích tình huống / quy định:</strong> <span class="placeholder-note">[Cần bổ sung tình huống an toàn số hoặc quy chuẩn liêm chính đã nghiên cứu]</span></li>
+                        <li><strong>Bước 2 — Đánh giá &amp; đề xuất giải pháp:</strong> <span class="placeholder-note">[Cần bổ sung các nguyên tắc bảo mật và trích dẫn AI bạn đã tổng hợp]</span></li>
+                        <li><strong>Bước 3 — Hoàn thiện cam kết &amp; báo cáo:</strong> <span class="placeholder-note">[Cần bổ sung nội dung hoàn thiện bài tập]</span></li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Kết quả / Sản phẩm hoàn thành</h3>
+                    <div class="editable-block" data-edit-id="b6-result">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mô tả sản phẩm hoàn thành của Bài 6 (bài tiểu luận ngắn, infographic quy tắc an toàn số, bảng checklist liêm chính học thuật...).]
+                      </p>
+                    </div>
+                    <div class="product-link-row">
+                      <span class="product-link-row__label">Liên kết sản phẩm:</span>
+                      <div class="editable-link-wrap" data-link-id="b6-link">
+                        <a href="#" class="product-link is-empty" data-product-link="b6-link" target="_blank" rel="noopener noreferrer">[Chưa gắn liên kết — Dán link trong HTML hoặc Chế độ chỉnh sửa nhanh]</a>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Tự đánh giá &amp; Những điều học được</h3>
+                    <div class="editable-block" data-edit-id="b6-reflection">
+                      <ul class="editorial-list">
+                        <li><strong>Điểm hài lòng:</strong> <span class="placeholder-note">[Cần bổ sung phần tự nhận xét]</span></li>
+                        <li><strong>Điều cần cải thiện:</strong> <span class="placeholder-note">[Cần bổ sung thói quen cần rèn thêm]</span></li>
+                        <li><strong>Bài học rút ra:</strong> <span class="placeholder-note">[Cần bổ sung bài học về đạo đức học thuật và an toàn thông tin]</span></li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+
+                <aside class="assignment-media">
+                  <section class="media-card" data-media-slot="bai6">
+                    <h3 class="media-card__title">Ảnh minh chứng · Bài 06</h3>
+                    <figure class="evidence-figure" data-image-slot="bai6">
+                      <img alt="Ảnh minh chứng Bài 6: An toàn và liêm chính học thuật trong môi trường số" class="evidence-figure__img is-hidden" data-managed-img="bai6">
+                      <div class="media-placeholder media-placeholder--evidence is-visible" data-placeholder-for="bai6">
+                        <svg class="media-placeholder__art media-placeholder__art--sm" viewBox="0 0 180 120" fill="none" aria-hidden="true">
+                          <rect x="12" y="12" width="156" height="96" rx="10" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.5"/>
+                          <circle cx="56" cy="46" r="12" fill="currentColor" opacity="0.16"/>
+                          <path d="M28 94L68 62L98 84L126 56L152 94H28Z" fill="currentColor" opacity="0.14"/>
+                        </svg>
+                        <p class="media-placeholder__title">Chưa có ảnh minh chứng</p>
+                        <p class="media-placeholder__hint">Gắn link Google Drive ở <code>MEDIA_CONFIG.images.bai6</code></p>
+                      </div>
+                      <figcaption class="evidence-figure__caption">Hình minh họa kết quả thực hành Bài 06</figcaption>
+                    </figure>
+
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-zoom-slot="bai6" data-zoom-title="Bài 06 — An toàn và liêm chính học thuật trong môi trường số">
+                        Phóng to ảnh minh chứng
+                      </button>
+                      <label class="btn btn--subtle btn--sm">
+                        <span>Thử ảnh từ máy</span>
+                        <input type="file" accept="image/*" class="sr-only" data-preview-upload="bai6">
+                      </label>
+                    </div>
+                  </section>
+
+                  <section class="media-card" data-pdf-slot="bai6">
+                    <h3 class="media-card__title">Tệp báo cáo PDF</h3>
+                    <p class="media-card__desc">Tài liệu đính kèm từ Google Drive (<code>MEDIA_CONFIG.pdfs.bai6</code>)</p>
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-open-pdf-slot="bai6" data-pdf-title="Bài 06 — An toàn và liêm chính học thuật trong môi trường số">
+                        Xem trước PDF
+                      </button>
+                      <a href="#" class="btn btn--subtle btn--sm" data-download-pdf-slot="bai6" target="_blank" rel="noopener noreferrer">
+                        Tải file PDF
+                      </a>
+                    </div>
+                  </section>
+                </aside>
+              </div>
+            </article>
+
+            <!-- TRANG 8 (INDEX 7): CHƯƠNG 3 -->
+            <article class="magazine-page" data-page="7" data-chapter-label="Chương 3 · Tổng kết và phản ánh">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 3 · Khép lại học phần</p>
+                  <span class="page-folio" aria-hidden="true">07</span>
+                </div>
+                <h2 class="page-title">Tổng kết và phản ánh hành trình học tập</h2>
+                <p class="page-lead drop-cap">
+                  Nhìn lại toàn bộ học phần Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo, mỗi bài tập không chỉ là một sản phẩm nộp bài mà còn là một bước chuyển mình trong tư duy làm việc số của sinh viên ngành Quản lý thông tin.
+                </p>
+              </header>
+
+              <div class="editorial-grid">
+                <section class="editorial-card">
+                  <h3 class="editorial-card__title">1. Những kiến thức và kỹ năng đã tiếp thu</h3>
+                  <div class="editable-block" data-edit-id="ch3-skills">
+                    <p class="placeholder-note">
+                      [Cần bổ sung: Tổng hợp các nhóm kiến thức và kỹ năng bạn cảm thấy vững vàng nhất sau 6 bài học — từ phần cứng, khai thác thông tin, AI tạo sinh, hợp tác số đến sáng tạo nội dung và an toàn học thuật.]
+                    </p>
+                  </div>
+                </section>
+
+                <section class="editorial-card">
+                  <h3 class="editorial-card__title">2. Điều tâm đắc nhất trong quá trình học</h3>
+                  <div class="editable-block" data-edit-id="ch3-highlight">
+                    <p class="placeholder-note">
+                      [Cần bổ sung: Chia sẻ khoảnh khắc, bài tập hoặc bài học khiến bạn ấn tượng nhất và thay đổi cách bạn tiếp cận công nghệ.]
+                    </p>
+                  </div>
+                </section>
+
+                <section class="editorial-card">
+                  <h3 class="editorial-card__title">3. Khó khăn và cách khắc phục</h3>
+                  <div class="editable-block" data-edit-id="ch3-challenges">
+                    <p class="placeholder-note">
+                      [Cần bổ sung: Ghi lại 1–2 thử thách bạn đã gặp trong quá trình thực hiện bài tập hoặc thiết kế Portfolio và cách bạn tìm tòi giải quyết.]
+                    </p>
+                  </div>
+                </section>
+
+                <section class="editorial-card">
+                  <h3 class="editorial-card__title">4. Định hướng áp dụng trong học tập và công việc tương lai</h3>
+                  <div class="editable-block" data-edit-id="ch3-future">
+                    <p class="placeholder-note">
+                      [Cần bổ sung: Kế hoạch ứng dụng công nghệ số và AI vào các môn chuyên ngành Quản lý thông tin, nghiên cứu khoa học sinh viên và định hướng nghề nghiệp sau khi ra trường.]
+                    </p>
+                  </div>
+                </section>
+              </div>
+
+              <blockquote class="editorial-quote">
+                <p>“Công nghệ số mở rộng khả năng tiếp cận tri thức, còn tư duy tổ chức thông tin và bản lĩnh học thuật quyết định giá trị của người làm chủ thông tin.”</p>
+                <footer>— Đỗ Nguyễn Phương Anh · Quản lý thông tin K70 · USSH 2026</footer>
+              </blockquote>
+            </article>
+          </div>
+
+          <nav class="page-pager" aria-label="Điều hướng giữa các trang">
+            <button type="button" class="btn btn--pager" id="prev-page-btn" disabled>
+              <span aria-hidden="true">←</span>
+              <span>Trang trước</span>
+            </button>
+
+            <span class="page-pager__indicator" id="pager-indicator">Trang 1 / 8</span>
+
+            <button type="button" class="btn btn--pager" id="next-page-btn">
+              <span>Trang tiếp theo</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </nav>
+
+          <footer class="book-footer">
+            <span>Đỗ Nguyễn Phương Anh</span>
+            <span aria-hidden="true">·</span>
+            <span>Quản lý thông tin – K70</span>
+            <span aria-hidden="true">·</span>
+            <span>ĐHKHXH&amp;NV – ĐHQGHN (USSH)</span>
+            <span aria-hidden="true">·</span>
+            <span>2026</span>
+          </footer>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button type="button" class="back-to-top" id="back-to-top-btn" aria-label="Quay về đầu trang" hidden>
+    <span aria-hidden="true">↑</span>
+    <span>Đầu trang</span>
+  </button>
+
+  <!-- Modal Phóng to ảnh minh chứng -->
+  <div class="modal-backdrop" id="lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden>
+    <div class="modal-dialog modal-dialog--lightbox">
+      <div class="modal-header">
+        <h3 class="modal-title" id="lightbox-title">Ảnh minh chứng</h3>
+        <button type="button" class="modal-close" id="lightbox-close-btn" aria-label="Đóng cửa sổ phóng to">✕</button>
+      </div>
+      <div class="modal-body modal-body--center">
+        <img alt="" id="lightbox-img" class="lightbox-img" hidden>
+        <div class="lightbox-empty" id="lightbox-empty" hidden>
+          <p class="lightbox-empty__title">Chưa có ảnh minh chứng</p>
+          <p class="lightbox-empty__desc" id="lightbox-empty-path"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Xem & Tải tài liệu PDF -->
+  <div class="modal-backdrop" id="pdf-modal" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-title" hidden>
+    <div class="modal-dialog modal-dialog--pdf">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="pdf-modal-title">Tài liệu PDF</h3>
+          <p class="modal-subtitle" id="pdf-modal-path"></p>
+        </div>
+        <div class="modal-header__actions">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm" id="pdf-modal-download">Tải xuống PDF</a>
+          <button type="button" class="modal-close" id="pdf-close-btn" aria-label="Đóng trình xem PDF">✕</button>
+        </div>
+      </div>
+      <div class="modal-body modal-body--pdf">
+        <iframe title="Trình xem tài liệu PDF" class="pdf-iframe" id="pdf-iframe" hidden></iframe>
+        <div class="pdf-empty" id="pdf-empty" hidden>
+          <p class="pdf-empty__title">Chưa gắn link PDF từ Google Drive</p>
+          <p class="pdf-empty__desc" id="pdf-empty-hint"></p>
+          <label class="btn btn--primary btn--sm">
+            <span>Mở thử file PDF từ máy tính</span>
+            <input type="file" accept="application/pdf" class="sr-only" id="local-pdf-input">
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drawer-scrim" id="drawer-scrim" hidden></div>
+
+  <script>
+    /* ==========================================================================
+       CẤU HÌNH ẢNH & PDF GOOGLE DRIVE (DÁN LINK CHIA SẺ HOẶC FILE_ID VÀO ĐÂY)
+       Ví dụ: 'https://drive.google.com/file/d/1AbCdEfGhIjK.../view?usp=sharing'
+       ========================================================================== */
+    var MEDIA_CONFIG = {
+      images: {
+        cover: '',
+        avatar: '',
+        bai1: '',
+        bai2: '',
+        bai3: '',
+        bai4: '',
+        bai5: '',
+        bai6: ''
+      },
+      pdfs: {
+        bai1: '',
+        bai2: '',
+        bai3: '',
+        bai4: '',
+        bai5: '',
+        bai6: ''
+      }
+    };
+
+    (function () {
+      'use strict';
+
+      var TOTAL_PAGES = 8;
+      var STORAGE_THEME_KEY = 'portfolio_gs_theme_v1';
+      var STORAGE_EDITS_KEY = 'portfolio_gs_edits_v1';
+      var STORAGE_LINKS_KEY = 'portfolio_gs_links_v1';
+      var STORAGE_MEDIA_KEY = 'portfolio_gs_media_v1';
+
+      function clampPageIndex(index, totalPages) {
+        var total = typeof totalPages === 'number' && totalPages > 0 ? totalPages : TOTAL_PAGES;
+        var parsed = Number(index);
+        if (!Number.isFinite(parsed)) return 0;
+        return Math.max(0, Math.min(total - 1, Math.trunc(parsed)));
+      }
+
+      function computeReadingProgress(currentIndex, totalPages) {
+        var total = typeof totalPages === 'number' && totalPages > 0 ? totalPages : TOTAL_PAGES;
+        var safeIndex = clampPageIndex(currentIndex, total);
+        return Math.round(((safeIndex + 1) / total) * 100);
+      }
+
+      function getActiveChapterKey(viewMode, pageIndex) {
+        if (viewMode === 'cover') return 'cover';
+        var idx = clampPageIndex(pageIndex, TOTAL_PAGES);
+        if (idx === 0) return '0';
+        if (idx >= 1 && idx <= 6) return '1';
+        return '7';
+      }
+
+      function normalizeTheme(theme) {
+        return theme === 'dark' ? 'dark' : 'light';
+      }
+
+      function isSafeExternalUrl(url) {
+        if (typeof url !== 'string') return false;
+        return /^https?:\/\/.+/i.test(url.trim());
+      }
+
+      function extractDriveFileId(input) {
+        if (typeof input !== 'string') return '';
+        var s = input.trim();
+        if (!s) return '';
+        var matchPath = s.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+        if (matchPath && matchPath[1]) return matchPath[1];
+        var matchParam = s.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+        if (matchParam && matchParam[1]) return matchParam[1];
+        if (/^[a-zA-Z0-9_-]{20,}$/.test(s)) return s;
+        return '';
+      }
+
+      function resolveImageUrl(rawValue) {
+        if (!rawValue || typeof rawValue !== 'string') return '';
+        var trimmed = rawValue.trim();
+        if (!trimmed) return '';
+        var driveId = extractDriveFileId(trimmed);
+        if (driveId) {
+          return 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(driveId) + '&sz=w1600';
+        }
+        return isSafeExternalUrl(trimmed) ? trimmed : '';
+      }
+
+      function resolvePdfPreviewUrl(rawValue) {
+        if (!rawValue || typeof rawValue !== 'string') return '';
+        var trimmed = rawValue.trim();
+        if (!trimmed) return '';
+        var driveId = extractDriveFileId(trimmed);
+        if (driveId) {
+          return 'https://drive.google.com/file/d/' + encodeURIComponent(driveId) + '/preview';
+        }
+        return isSafeExternalUrl(trimmed) ? trimmed : '';
+      }
+
+      function resolvePdfDownloadUrl(rawValue) {
+        if (!rawValue || typeof rawValue !== 'string') return '';
+        var trimmed = rawValue.trim();
+        if (!trimmed) return '';
+        var driveId = extractDriveFileId(trimmed);
+        if (driveId) {
+          return 'https://drive.google.com/uc?export=download&id=' + encodeURIComponent(driveId);
+        }
+        return isSafeExternalUrl(trimmed) ? trimmed : '';
+      }
+
+      function safeStorageGet(key) {
+        try {
+          return localStorage.getItem(key);
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function safeStorageSet(key, value) {
+        try {
+          localStorage.setItem(key, value);
+        } catch (e) {}
+      }
+
+      function safeStorageRemove(key) {
+        try {
+          localStorage.removeItem(key);
+        } catch (e) {}
+      }
+
+      function initApp() {
+        var state = {
+          viewMode: 'cover',
+          pageIndex: 0,
+          editMode: false,
+          confirmResetPending: false,
+          localObjectUrls: {},
+          runtimeImages: Object.assign({}, MEDIA_CONFIG.images),
+          runtimePdfs: Object.assign({}, MEDIA_CONFIG.pdfs)
+        };
+
+        var savedMediaRaw = safeStorageGet(STORAGE_MEDIA_KEY);
+        if (savedMediaRaw) {
+          try {
+            var parsedMedia = JSON.parse(savedMediaRaw);
+            if (parsedMedia && parsedMedia.images) {
+              Object.keys(parsedMedia.images).forEach(function (k) {
+                if (parsedMedia.images[k]) state.runtimeImages[k] = parsedMedia.images[k];
+              });
+            }
+            if (parsedMedia && parsedMedia.pdfs) {
+              Object.keys(parsedMedia.pdfs).forEach(function (k) {
+                if (parsedMedia.pdfs[k]) state.runtimePdfs[k] = parsedMedia.pdfs[k];
+              });
+            }
+          } catch (e) {}
+        }
+
+        var coverView = document.getElementById('cover-view');
+        var magazineView = document.getElementById('magazine-view');
+        var topbarLinks = document.querySelectorAll('.topbar__link');
+        var brandHomeLink = document.getElementById('brand-home-link');
+        var openPortfolioBtn = document.getElementById('open-portfolio-btn');
+        var coverTocBtn = document.getElementById('cover-toc-btn');
+        var backToCoverBtn = document.getElementById('back-to-cover-btn');
+        var printPortfolioBtn = document.getElementById('print-portfolio-btn');
+
+        var tocSidebar = document.getElementById('toc-sidebar');
+        var mobileTocToggle = document.getElementById('mobile-toc-toggle');
+        var mobileTocClose = document.getElementById('mobile-toc-close');
+        var drawerScrim = document.getElementById('drawer-scrim');
+        var tocButtons = document.querySelectorAll('[data-goto-page]');
+
+        var pages = document.querySelectorAll('.magazine-page');
+        var prevPageBtn = document.getElementById('prev-page-btn');
+        var nextPageBtn = document.getElementById('next-page-btn');
+        var pagerIndicator = document.getElementById('pager-indicator');
+        var readingPageCounter = document.getElementById('reading-page-counter');
+        var mobilePageStatus = document.getElementById('mobile-page-status');
+        var currentChapterLabel = document.getElementById('current-chapter-label');
+        var readingProgressFill = document.getElementById('reading-progress-fill');
+        var readingProgressBar = document.querySelector('.reading-progress');
+
+        var themeToggleBtn = document.getElementById('theme-toggle-btn');
+        var themeIcon = document.getElementById('theme-icon');
+        var themeLabel = document.getElementById('theme-label');
+
+        var backToTopBtn = document.getElementById('back-to-top-btn');
+
+        var toggleEditModeBtn = document.getElementById('toggle-edit-mode-btn');
+        var editModeLabel = document.getElementById('edit-mode-label');
+        var resetEditsBtn = document.getElementById('reset-edits-btn');
+        var editModeBanner = document.getElementById('edit-mode-banner');
+        var editableBlocks = document.querySelectorAll('.editable-block[data-edit-id]');
+        var defaultBlockHtml = {};
+
+        var lightboxModal = document.getElementById('lightbox-modal');
+        var lightboxTitle = document.getElementById('lightbox-title');
+        var lightboxImg = document.getElementById('lightbox-img');
+        var lightboxEmpty = document.getElementById('lightbox-empty');
+        var lightboxEmptyPath = document.getElementById('lightbox-empty-path');
+        var lightboxCloseBtn = document.getElementById('lightbox-close-btn');
+
+        var pdfModal = document.getElementById('pdf-modal');
+        var pdfModalTitle = document.getElementById('pdf-modal-title');
+        var pdfModalPath = document.getElementById('pdf-modal-path');
+        var pdfModalDownload = document.getElementById('pdf-modal-download');
+        var pdfIframe = document.getElementById('pdf-iframe');
+        var pdfEmpty = document.getElementById('pdf-empty');
+        var pdfEmptyHint = document.getElementById('pdf-empty-hint');
+        var pdfCloseBtn = document.getElementById('pdf-close-btn');
+        var localPdfInput = document.getElementById('local-pdf-input');
+
+        /* 1. Giao diện Sáng / Tối */
+        function applyTheme(theme) {
+          var safeTheme = normalizeTheme(theme);
+          document.documentElement.setAttribute('data-theme', safeTheme);
+          var isDark = safeTheme === 'dark';
+          if (themeToggleBtn) themeToggleBtn.setAttribute('aria-pressed', String(isDark));
+          if (themeIcon) themeIcon.textContent = isDark ? '☾' : '☀';
+          if (themeLabel) themeLabel.textContent = isDark ? 'Giao diện sáng' : 'Giao diện tối';
+          safeStorageSet(STORAGE_THEME_KEY, safeTheme);
+        }
+
+        function initTheme() {
+          var saved = safeStorageGet(STORAGE_THEME_KEY);
+          if (saved) {
+            applyTheme(saved);
+          } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            applyTheme('dark');
+          } else {
+            applyTheme('light');
+          }
+        }
+
+        if (themeToggleBtn) {
+          themeToggleBtn.addEventListener('click', function () {
+            var current = document.documentElement.getAttribute('data-theme');
+            applyTheme(current === 'dark' ? 'light' : 'dark');
+          });
+        }
+
+        /* 2. Điều hướng Trang bìa & Trang nội dung */
+        function scrollToTopSafe() {
+          try {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } catch (e) {
+            window.scrollTo(0, 0);
+          }
+          var topEl = document.querySelector('.topbar');
+          if (topEl && typeof topEl.scrollIntoView === 'function') {
+            try {
+              topEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } catch (e) {}
+          }
+        }
+
+        function updateTopbarActive() {
+          var activeKey = getActiveChapterKey(state.viewMode, state.pageIndex);
+          topbarLinks.forEach(function (link) {
+            var target = link.getAttribute('data-nav-target');
+            var pageIdx = link.getAttribute('data-page-index');
+            var isMatch =
+              (activeKey === 'cover' && target === 'cover') ||
+              (activeKey !== 'cover' && target === 'page' && pageIdx === activeKey);
+            link.classList.toggle('is-active', isMatch);
+          });
+        }
+
+        function renderView() {
+          var isCover = state.viewMode === 'cover';
+          if (coverView) coverView.hidden = !isCover;
+          if (magazineView) magazineView.hidden = isCover;
+
+          if (!isCover) {
+            state.pageIndex = clampPageIndex(state.pageIndex, pages.length);
+
+            pages.forEach(function (pageEl, idx) {
+              pageEl.classList.toggle('is-active', idx === state.pageIndex);
+            });
+
+            tocButtons.forEach(function (btn) {
+              var targetIdx = Number(btn.getAttribute('data-goto-page'));
+              var active = targetIdx === state.pageIndex;
+              btn.classList.toggle('is-active', active);
+              if (active) {
+                btn.setAttribute('aria-current', 'page');
+              } else {
+                btn.removeAttribute('aria-current');
+              }
+            });
+
+            var pageText = 'Trang ' + (state.pageIndex + 1) + ' / ' + pages.length;
+            var pct = computeReadingProgress(state.pageIndex, pages.length);
+            var activePage = pages[state.pageIndex];
+            var chapterTitle = activePage ? activePage.getAttribute('data-chapter-label') : '';
+
+            if (pagerIndicator) pagerIndicator.textContent = pageText;
+            if (readingPageCounter) readingPageCounter.textContent = pageText + ' · ' + pct + '%';
+            if (mobilePageStatus) mobilePageStatus.textContent = pageText;
+            if (currentChapterLabel && chapterTitle) currentChapterLabel.textContent = chapterTitle;
+            if (readingProgressFill) readingProgressFill.style.width = pct + '%';
+            if (readingProgressBar) readingProgressBar.setAttribute('aria-valuenow', String(pct));
+
+            if (prevPageBtn) prevPageBtn.disabled = state.pageIndex === 0;
+            if (nextPageBtn) nextPageBtn.disabled = state.pageIndex === pages.length - 1;
+          }
+
+          updateTopbarActive();
+        }
+
+        function showCover() {
+          state.viewMode = 'cover';
+          closeMobileToc();
+          renderView();
+          scrollToTopSafe();
+        }
+
+        function goToPage(index) {
+          state.viewMode = 'magazine';
+          state.pageIndex = clampPageIndex(index, pages.length);
+          closeMobileToc();
+          renderView();
+          scrollToTopSafe();
+        }
+
+        if (brandHomeLink) {
+          brandHomeLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            showCover();
+          });
+        }
+
+        if (openPortfolioBtn) {
+          openPortfolioBtn.addEventListener('click', function () {
+            goToPage(0);
+          });
+        }
+
+        if (coverTocBtn) {
+          coverTocBtn.addEventListener('click', function () {
+            goToPage(0);
+            if (window.innerWidth <= 1024) {
+              openMobileToc();
+            }
+          });
+        }
+
+        if (backToCoverBtn) backToCoverBtn.addEventListener('click', showCover);
+
+        topbarLinks.forEach(function (link) {
+          link.addEventListener('click', function () {
+            var target = link.getAttribute('data-nav-target');
+            if (target === 'cover') {
+              showCover();
+            } else {
+              goToPage(Number(link.getAttribute('data-page-index') || 0));
+            }
+          });
+        });
+
+        tocButtons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            goToPage(Number(btn.getAttribute('data-goto-page') || 0));
+          });
+        });
+
+        if (prevPageBtn) {
+          prevPageBtn.addEventListener('click', function () {
+            if (state.pageIndex > 0) goToPage(state.pageIndex - 1);
+          });
+        }
+
+        if (nextPageBtn) {
+          nextPageBtn.addEventListener('click', function () {
+            if (state.pageIndex < pages.length - 1) goToPage(state.pageIndex + 1);
+          });
+        }
+
+        /* 3. Menu Mục lục trên thiết bị di động */
+        function openMobileToc() {
+          if (!tocSidebar) return;
+          tocSidebar.classList.add('is-open');
+          if (drawerScrim) drawerScrim.hidden = false;
+          if (mobileTocToggle) mobileTocToggle.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeMobileToc() {
+          if (!tocSidebar) return;
+          tocSidebar.classList.remove('is-open');
+          if (drawerScrim) drawerScrim.hidden = true;
+          if (mobileTocToggle) mobileTocToggle.setAttribute('aria-expanded', 'false');
+        }
+
+        if (mobileTocToggle) mobileTocToggle.addEventListener('click', openMobileToc);
+        if (mobileTocClose) mobileTocClose.addEventListener('click', closeMobileToc);
+        if (drawerScrim) drawerScrim.addEventListener('click', closeMobileToc);
+
+        /* 4. Quản lý Ảnh (Google Drive URL hoặc Thử ảnh từ máy) */
+        function setImageReadyState(slot, isLoaded) {
+          var img = document.querySelector('img[data-managed-img="' + slot + '"]');
+          var placeholder = document.querySelector('[data-placeholder-for="' + slot + '"]');
+          if (img) img.classList.toggle('is-hidden', !isLoaded);
+          if (placeholder) placeholder.classList.toggle('is-visible', !isLoaded);
+        }
+
+        function applyImageSlot(slot, rawUrl) {
+          var img = document.querySelector('img[data-managed-img="' + slot + '"]');
+          if (!img) return;
+          var resolved = resolveImageUrl(rawUrl);
+          if (!resolved) {
+            img.removeAttribute('src');
+            setImageReadyState(slot, false);
+            return;
+          }
+          img.referrerPolicy = 'no-referrer';
+          img.src = resolved;
+        }
+
+        function initManagedImages() {
+          var imgs = document.querySelectorAll('img[data-managed-img]');
+          imgs.forEach(function (img) {
+            var slot = img.getAttribute('data-managed-img');
+            img.addEventListener('load', function () {
+              setImageReadyState(slot, img.naturalWidth > 0);
+            });
+            img.addEventListener('error', function () {
+              setImageReadyState(slot, false);
+            });
+
+            if (slot.indexOf('bai') === 0) {
+              img.addEventListener('click', function () {
+                var zoomBtn = document.querySelector('[data-zoom-slot="' + slot + '"]');
+                var title = zoomBtn ? zoomBtn.getAttribute('data-zoom-title') : 'Ảnh minh chứng';
+                openLightbox(slot, title);
+              });
+            }
+
+            applyImageSlot(slot, state.runtimeImages[slot]);
+          });
+
+          document.querySelectorAll('input[data-preview-upload]').forEach(function (input) {
+            input.addEventListener('change', function () {
+              var file = input.files && input.files[0];
+              if (!file) return;
+              var slot = input.getAttribute('data-preview-upload');
+              var targetImg = document.querySelector('img[data-managed-img="' + slot + '"]');
+              if (!targetImg) return;
+              if (state.localObjectUrls[slot]) {
+                URL.revokeObjectURL(state.localObjectUrls[slot]);
+              }
+              var objectUrl = URL.createObjectURL(file);
+              state.localObjectUrls[slot] = objectUrl;
+              targetImg.src = objectUrl;
+            });
+          });
+        }
+
+        /* 5. Lightbox phóng to ảnh */
+        function openLightbox(slot, title) {
+          if (!lightboxModal) return;
+          var img = document.querySelector('img[data-managed-img="' + slot + '"]');
+          var hasImage = img && !img.classList.contains('is-hidden') && img.naturalWidth > 0;
+
+          if (lightboxTitle) lightboxTitle.textContent = title || 'Ảnh minh chứng';
+
+          if (hasImage) {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt || title || 'Ảnh minh chứng phóng to';
+            lightboxImg.hidden = false;
+            if (lightboxEmpty) lightboxEmpty.hidden = true;
+          } else {
+            lightboxImg.hidden = true;
+            if (lightboxEmpty) {
+              lightboxEmpty.hidden = false;
+              if (lightboxEmptyPath) {
+                lightboxEmptyPath.textContent =
+                  'Hãy dán link ảnh Google Drive vào mục MEDIA_CONFIG.images.' +
+                  slot +
+                  ' trong mã HTML, hoặc nhấn nút "Thử ảnh từ máy".';
+              }
+            }
+          }
+
+          lightboxModal.hidden = false;
+          if (lightboxCloseBtn) lightboxCloseBtn.focus();
+        }
+
+        function closeLightbox() {
+          if (!lightboxModal) return;
+          lightboxModal.hidden = true;
+          if (lightboxImg) lightboxImg.removeAttribute('src');
+        }
+
+        document.querySelectorAll('[data-zoom-slot]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            openLightbox(btn.getAttribute('data-zoom-slot'), btn.getAttribute('data-zoom-title'));
+          });
+        });
+
+        if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
+        if (lightboxModal) {
+          lightboxModal.addEventListener('click', function (e) {
+            if (e.target === lightboxModal) closeLightbox();
+          });
+        }
+
+        /* 6. Modal Xem & Tải PDF từ Google Drive */
+        function showPdfInIframe(url) {
+          if (!pdfIframe || !pdfEmpty) return;
+          pdfIframe.src = url;
+          pdfIframe.hidden = false;
+          pdfEmpty.hidden = true;
+        }
+
+        function showPdfMissingState(slot) {
+          if (!pdfIframe || !pdfEmpty) return;
+          pdfIframe.hidden = true;
+          pdfIframe.removeAttribute('src');
+          pdfEmpty.hidden = false;
+          if (pdfEmptyHint) {
+            pdfEmptyHint.textContent =
+              'Hãy dán đường dẫn chia sẻ công khai tệp PDF từ Google Drive vào MEDIA_CONFIG.pdfs.' +
+              slot +
+              ' trong mã HTML (hoặc dùng Chế độ chỉnh sửa nhanh), hoặc mở thử tệp PDF từ máy tính ngay bên dưới.';
+          }
+        }
+
+        function syncPdfDownloadLinks() {
+          document.querySelectorAll('[data-download-pdf-slot]').forEach(function (link) {
+            var slot = link.getAttribute('data-download-pdf-slot');
+            var rawVal = state.runtimePdfs[slot];
+            var dlUrl = resolvePdfDownloadUrl(rawVal);
+            if (dlUrl) {
+              link.href = dlUrl;
+              link.dataset.hasPdf = '1';
+            } else {
+              link.href = '#';
+              link.dataset.hasPdf = '0';
+            }
+          });
+        }
+
+        function openPdfModal(slot, title) {
+          if (!pdfModal) return;
+          var rawVal = state.runtimePdfs[slot];
+          var previewUrl = resolvePdfPreviewUrl(rawVal);
+          var downloadUrl = resolvePdfDownloadUrl(rawVal);
+
+          if (pdfModalTitle) pdfModalTitle.textContent = title || 'Tài liệu PDF';
+          if (pdfModalPath) {
+            pdfModalPath.textContent = previewUrl ? 'Nguồn: Google Drive / Liên kết trực tuyến' : 'Chưa cấu hình liên kết PDF';
+          }
+
+          if (pdfModalDownload) {
+            if (downloadUrl) {
+              pdfModalDownload.href = downloadUrl;
+              pdfModalDownload.hidden = false;
+            } else {
+              pdfModalDownload.href = '#';
+              pdfModalDownload.hidden = true;
+            }
+          }
+
+          pdfModal.hidden = false;
+          if (pdfCloseBtn) pdfCloseBtn.focus();
+
+          if (previewUrl) {
+            showPdfInIframe(previewUrl);
+          } else {
+            showPdfMissingState(slot);
+          }
+        }
+
+        function closePdfModal() {
+          if (!pdfModal) return;
+          pdfModal.hidden = true;
+          if (pdfIframe) pdfIframe.removeAttribute('src');
+        }
+
+        document.querySelectorAll('[data-open-pdf-slot]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            openPdfModal(btn.getAttribute('data-open-pdf-slot'), btn.getAttribute('data-pdf-title'));
+          });
+        });
+
+        document.querySelectorAll('[data-download-pdf-slot]').forEach(function (link) {
+          link.addEventListener('click', function (e) {
+            if (link.dataset.hasPdf !== '1') {
+              e.preventDefault();
+              openPdfModal(link.getAttribute('data-download-pdf-slot'), 'Tài liệu PDF chưa được gắn link');
+            }
+          });
+        });
+
+        if (localPdfInput) {
+          localPdfInput.addEventListener('change', function () {
+            var file = localPdfInput.files && localPdfInput.files[0];
+            if (!file) return;
+            if (state.localObjectUrls.pdfPreview) {
+              URL.revokeObjectURL(state.localObjectUrls.pdfPreview);
+            }
+            var url = URL.createObjectURL(file);
+            state.localObjectUrls.pdfPreview = url;
+            if (pdfModalDownload) {
+              pdfModalDownload.href = url;
+              pdfModalDownload.setAttribute('download', file.name);
+              pdfModalDownload.hidden = false;
+            }
+            showPdfInIframe(url);
+          });
+        }
+
+        if (pdfCloseBtn) pdfCloseBtn.addEventListener('click', closePdfModal);
+        if (pdfModal) {
+          pdfModal.addEventListener('click', function (e) {
+            if (e.target === pdfModal) closePdfModal();
+          });
+        }
+
+        /* 7. Chế độ chỉnh sửa nhanh & Lưu cục bộ */
+        function saveRuntimeMedia() {
+          safeStorageSet(
+            STORAGE_MEDIA_KEY,
+            JSON.stringify({
+              images: state.runtimeImages,
+              pdfs: state.runtimePdfs
+            })
+          );
+        }
+
+        function loadSavedEdits() {
+          var savedBlocks = {};
+          var savedLinks = {};
+          try {
+            savedBlocks = JSON.parse(safeStorageGet(STORAGE_EDITS_KEY) || '{}');
+            savedLinks = JSON.parse(safeStorageGet(STORAGE_LINKS_KEY) || '{}');
+          } catch (e) {
+            savedBlocks = {};
+            savedLinks = {};
+          }
+
+          editableBlocks.forEach(function (block) {
+            var id = block.getAttribute('data-edit-id');
+            defaultBlockHtml[id] = block.innerHTML;
+            if (savedBlocks && typeof savedBlocks[id] === 'string') {
+              block.innerHTML = savedBlocks[id];
+            }
+            block.addEventListener('input', function () {
+              try {
+                var current = JSON.parse(safeStorageGet(STORAGE_EDITS_KEY) || '{}');
+                current[id] = block.innerHTML;
+                safeStorageSet(STORAGE_EDITS_KEY, JSON.stringify(current));
+              } catch (e) {}
+            });
+          });
+
+          document.querySelectorAll('[data-link-id]').forEach(function (wrap) {
+            var linkId = wrap.getAttribute('data-link-id');
+            var anchor = wrap.querySelector('[data-product-link]');
+            if (anchor && savedLinks && isSafeExternalUrl(savedLinks[linkId])) {
+              anchor.href = savedLinks[linkId];
+              anchor.textContent = savedLinks[linkId];
+              anchor.classList.remove('is-empty');
+            }
+            if (anchor) {
+              anchor.addEventListener('click', function (e) {
+                if (anchor.classList.contains('is-empty')) {
+                  e.preventDefault();
+                }
+              });
+            }
+          });
+        }
+
+        function setEditMode(enabled) {
+          state.editMode = Boolean(enabled);
+          document.body.classList.toggle('is-editing', state.editMode);
+          if (toggleEditModeBtn) toggleEditModeBtn.setAttribute('aria-pressed', String(state.editMode));
+          if (editModeLabel) editModeLabel.textContent = state.editMode ? 'Hoàn tất chỉnh sửa' : 'Chỉnh sửa nhanh';
+          if (editModeBanner) editModeBanner.hidden = !state.editMode;
+          if (resetEditsBtn) {
+            resetEditsBtn.hidden = !state.editMode;
+            resetEditsBtn.textContent = 'Khôi phục mẫu';
+            state.confirmResetPending = false;
+          }
+
+          editableBlocks.forEach(function (block) {
+            block.setAttribute('contenteditable', state.editMode ? 'true' : 'false');
+          });
+
+          document.querySelectorAll('[data-link-id]').forEach(function (wrap) {
+            var existing = wrap.querySelector('.link-inline-editor');
+            if (state.editMode && !existing) {
+              var linkId = wrap.getAttribute('data-link-id');
+              var anchor = wrap.querySelector('[data-product-link]');
+              var editor = document.createElement('div');
+              editor.className = 'link-inline-editor';
+
+              var input = document.createElement('input');
+              input.type = 'url';
+              input.className = 'link-inline-input';
+              input.placeholder = 'Dán đường dẫn sản phẩm https://...';
+              input.value = anchor && !anchor.classList.contains('is-empty') ? anchor.href : '';
+
+              var saveBtn = document.createElement('button');
+              saveBtn.type = 'button';
+              saveBtn.className = 'link-edit-btn';
+              saveBtn.textContent = 'Lưu liên kết';
+
+              saveBtn.addEventListener('click', function () {
+                var val = input.value.trim();
+                if (isSafeExternalUrl(val)) {
+                  anchor.href = val;
+                  anchor.textContent = val;
+                  anchor.classList.remove('is-empty');
+                  try {
+                    var savedLinks = JSON.parse(safeStorageGet(STORAGE_LINKS_KEY) || '{}');
+                    savedLinks[linkId] = val;
+                    safeStorageSet(STORAGE_LINKS_KEY, JSON.stringify(savedLinks));
+                  } catch (e) {}
+                } else if (!val) {
+                  anchor.href = '#';
+                  anchor.textContent = '[Chưa gắn liên kết — Dán link trong HTML hoặc Chế độ chỉnh sửa nhanh]';
+                  anchor.classList.add('is-empty');
+                  try {
+                    var linksObj = JSON.parse(safeStorageGet(STORAGE_LINKS_KEY) || '{}');
+                    delete linksObj[linkId];
+                    safeStorageSet(STORAGE_LINKS_KEY, JSON.stringify(linksObj));
+                  } catch (e) {}
+                }
+              });
+
+              editor.appendChild(input);
+              editor.appendChild(saveBtn);
+              wrap.appendChild(editor);
+            } else if (!state.editMode && existing) {
+              existing.remove();
+            }
+          });
+
+          /* Cho phép gắn nhanh link Drive cho ảnh và PDF khi bật Chỉnh sửa nhanh */
+          document.querySelectorAll('[data-media-slot]').forEach(function (card) {
+            var slot = card.getAttribute('data-media-slot');
+            var existing = card.querySelector('.drive-inline-editor');
+            if (state.editMode && !existing) {
+              var box = document.createElement('div');
+              box.className = 'drive-inline-editor';
+              var lbl = document.createElement('span');
+              lbl.className = 'drive-inline-label';
+              lbl.textContent = 'Link ảnh Google Drive:';
+              var row = document.createElement('div');
+              row.className = 'drive-inline-row';
+              var inp = document.createElement('input');
+              inp.type = 'url';
+              inp.className = 'link-inline-input';
+              inp.placeholder = 'Dán link Drive hoặc URL ảnh...';
+              inp.value = state.runtimeImages[slot] || '';
+              var btn = document.createElement('button');
+              btn.type = 'button';
+              btn.className = 'link-edit-btn';
+              btn.textContent = 'Áp dụng';
+              btn.addEventListener('click', function () {
+                state.runtimeImages[slot] = inp.value.trim();
+                applyImageSlot(slot, state.runtimeImages[slot]);
+                saveRuntimeMedia();
+              });
+              row.appendChild(inp);
+              row.appendChild(btn);
+              box.appendChild(lbl);
+              box.appendChild(row);
+              card.appendChild(box);
+            } else if (!state.editMode && existing) {
+              existing.remove();
+            }
+          });
+
+          document.querySelectorAll('[data-pdf-slot]').forEach(function (card) {
+            var slot = card.getAttribute('data-pdf-slot');
+            var existing = card.querySelector('.drive-inline-editor');
+            if (state.editMode && !existing) {
+              var box = document.createElement('div');
+              box.className = 'drive-inline-editor';
+              var lbl = document.createElement('span');
+              lbl.className = 'drive-inline-label';
+              lbl.textContent = 'Link PDF Google Drive:';
+              var row = document.createElement('div');
+              row.className = 'drive-inline-row';
+              var inp = document.createElement('input');
+              inp.type = 'url';
+              inp.className = 'link-inline-input';
+              inp.placeholder = 'Dán link chia sẻ PDF Drive...';
+              inp.value = state.runtimePdfs[slot] || '';
+              var btn = document.createElement('button');
+              btn.type = 'button';
+              btn.className = 'link-edit-btn';
+              btn.textContent = 'Áp dụng';
+              btn.addEventListener('click', function () {
+                state.runtimePdfs[slot] = inp.value.trim();
+                syncPdfDownloadLinks();
+                saveRuntimeMedia();
+              });
+              row.appendChild(inp);
+              row.appendChild(btn);
+              box.appendChild(lbl);
+              box.appendChild(row);
+              card.appendChild(box);
+            } else if (!state.editMode && existing) {
+              existing.remove();
+            }
+          });
+        }
+
+        if (toggleEditModeBtn) {
+          toggleEditModeBtn.addEventListener('click', function () {
+            setEditMode(!state.editMode);
+          });
+        }
+
+        if (resetEditsBtn) {
+          resetEditsBtn.addEventListener('click', function () {
+            if (!state.confirmResetPending) {
+              state.confirmResetPending = true;
+              resetEditsBtn.textContent = 'Nhấn lần nữa để khôi phục';
+              return;
+            }
+            state.confirmResetPending = false;
+            resetEditsBtn.textContent = 'Khôi phục mẫu';
+            safeStorageRemove(STORAGE_EDITS_KEY);
+            safeStorageRemove(STORAGE_LINKS_KEY);
+            safeStorageRemove(STORAGE_MEDIA_KEY);
+            state.runtimeImages = Object.assign({}, MEDIA_CONFIG.images);
+            state.runtimePdfs = Object.assign({}, MEDIA_CONFIG.pdfs);
+            Object.keys(state.runtimeImages).forEach(function (slot) {
+              applyImageSlot(slot, state.runtimeImages[slot]);
+            });
+            syncPdfDownloadLinks();
+            editableBlocks.forEach(function (block) {
+              var id = block.getAttribute('data-edit-id');
+              if (defaultBlockHtml[id]) {
+                block.innerHTML = defaultBlockHtml[id];
+              }
+            });
+            document.querySelectorAll('[data-product-link]').forEach(function (anchor) {
+              anchor.href = '#';
+              anchor.textContent = '[Chưa gắn liên kết — Dán link trong HTML hoặc Chế độ chỉnh sửa nhanh]';
+              anchor.classList.add('is-empty');
+            });
+            setEditMode(false);
+          });
+        }
+
+        /* 8. Quay về đầu trang, In PDF & Phím tắt */
+        function updateBackToTop() {
+          if (!backToTopBtn) return;
+          backToTopBtn.hidden = window.scrollY < 240;
+        }
+
+        window.addEventListener('scroll', updateBackToTop, { passive: true });
+
+        if (backToTopBtn) {
+          backToTopBtn.addEventListener('click', scrollToTopSafe);
+        }
+
+        if (printPortfolioBtn) {
+          printPortfolioBtn.addEventListener('click', function () {
+            window.print();
+          });
+        }
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            if (lightboxModal && !lightboxModal.hidden) closeLightbox();
+            if (pdfModal && !pdfModal.hidden) closePdfModal();
+            closeMobileToc();
+            return;
+          }
+
+          var isModalOpen =
+            (lightboxModal && !lightboxModal.hidden) ||
+            (pdfModal && !pdfModal.hidden);
+          var targetTag = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : '';
+          var isTyping =
+            targetTag === 'input' ||
+            targetTag === 'textarea' ||
+            (e.target && e.target.isContentEditable);
+
+          if (isModalOpen || isTyping || state.viewMode !== 'magazine') return;
+
+          if (e.key === 'ArrowLeft' && state.pageIndex > 0) {
+            goToPage(state.pageIndex - 1);
+          } else if (e.key === 'ArrowRight' && state.pageIndex < pages.length - 1) {
+            goToPage(state.pageIndex + 1);
+          }
+        });
+
+        /* 9. Khởi chạy */
+        initTheme();
+        loadSavedEdits();
+        initManagedImages();
+        syncPdfDownloadLinks();
+        renderView();
+        updateBackToTop();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initApp);
+      } else {
+        initApp();
+      }
+    })();
+  </script>
+</body>
+</html>

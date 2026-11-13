@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Portfolio — Đỗ Nguyễn Phương Anh</title>
+  <meta name="description" content="Digital Portfolio cá nhân môn Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo — Đỗ Nguyễn Phương Anh, Ngành Quản lý thông tin K70, Trường Đại học Khoa học Xã hội và Nhân văn – ĐHQGHN (USSH).">
+  <meta property="og:title" content="Digital Portfolio — Đỗ Nguyễn Phương Anh">
+  <meta property="og:description" content="Tạp chí điện tử lưu trữ bài tập và dự án học phần Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo (USSH – 2026).">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Ruthie&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <!-- Nền pastel chuyển sắc mềm mại -->
+  <div class="ambient-backdrop" aria-hidden="true">
+    <div class="ambient-orb ambient-orb--lavender"></div>
+    <div class="ambient-orb ambient-orb--rose"></div>
+    <div class="ambient-orb ambient-orb--sky"></div>
+  </div>
+
+  <!-- Thanh điều hướng trên cùng (3 vùng gọn gàng) -->
+  <header class="topbar" role="banner">
+    <div class="topbar__inner">
+      <a href="#trang-bia" class="topbar__brand" id="brand-home-link">Digital Portfolio</a>
+
+      <nav class="topbar__nav" aria-label="Điều hướng chương chính">
+        <button type="button" class="topbar__link is-active" data-nav-target="cover">Trang bìa</button>
+        <button type="button" class="topbar__link" data-nav-target="page" data-page-index="0">Chương 1</button>
+        <button type="button" class="topbar__link" data-nav-target="page" data-page-index="1">Chương 2</button>
+        <button type="button" class="topbar__link" data-nav-target="page" data-page-index="7">Chương 3</button>
+      </nav>
+
+      <div class="topbar__actions">
+        <button type="button" class="theme-toggle" id="theme-toggle-btn" aria-label="Chuyển đổi chế độ sáng hoặc tối" aria-pressed="false">
+          <span class="theme-toggle__icon" id="theme-icon" aria-hidden="true">☀</span>
+          <span class="theme-toggle__label" id="theme-label">Giao diện tối</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       TRANG BÌA (COVER PAGE)
+       ========================================================= -->
+  <main id="app-root">
+    <section id="cover-view" class="cover-stage is-visible" aria-label="Trang bìa Digital Portfolio">
+      <article class="cover-card">
+        <div class="cover-card__grid">
+          <!-- Cột trái: Thông tin học thuật & Tiêu đề tạp chí -->
+          <div class="cover-card__editorial">
+            <p class="cover-kicker">Đại học Khoa học Xã hội và Nhân văn – ĐHQGHN (USSH)</p>
+            <p class="cover-issue">Ấn phẩm học tập cá nhân · Năm học 2026</p>
+
+            <h1 class="cover-title">
+              <span class="cover-title__line">DIGITAL</span>
+              <span class="cover-title__italic">Portfolio</span>
+            </h1>
+
+            <p class="cover-course">
+              Môn học: <strong>Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo</strong>
+            </p>
+
+            <div class="cover-divider" aria-hidden="true"></div>
+
+            <dl class="cover-meta">
+              <div class="cover-meta__row">
+                <dt>Sinh viên thực hiện</dt>
+                <dd>Đỗ Nguyễn Phương Anh</dd>
+              </div>
+              <div class="cover-meta__row">
+                <dt>Ngành học &amp; Khóa</dt>
+                <dd>Quản lý thông tin – K70</dd>
+              </div>
+              <div class="cover-meta__row">
+                <dt>Đơn vị đào tạo</dt>
+                <dd>Trường ĐHKHXH&amp;NV – ĐHQGHN</dd>
+              </div>
+              <div class="cover-meta__row">
+                <dt>Năm học</dt>
+                <dd>2026</dd>
+              </div>
+            </dl>
+
+            <div class="cover-actions">
+              <button type="button" class="btn btn--primary" id="open-portfolio-btn">
+                <span>Lật mở Portfolio</span>
+                <span aria-hidden="true">→</span>
+              </button>
+              <button type="button" class="btn btn--ghost" id="cover-toc-btn">
+                Xem Mục lục
+              </button>
+            </div>
+          </div>
+
+          <!-- Cột phải: Ảnh bìa lớn (images/cover.jpg) -->
+          <div class="cover-card__visual">
+            <figure class="cover-frame" data-image-slot="cover">
+              <img
+                src="images/cover.jpg"
+                alt="Ảnh bìa Digital Portfolio của Đỗ Nguyễn Phương Anh"
+                class="cover-frame__img"
+                data-managed-img="cover"
+              >
+              <div class="media-placeholder media-placeholder--cover" data-placeholder-for="cover">
+                <svg class="media-placeholder__art" viewBox="0 0 240 280" fill="none" aria-hidden="true">
+                  <rect x="18" y="20" width="204" height="240" rx="14" stroke="currentColor" stroke-width="1.4" stroke-dasharray="5 5" opacity="0.45"/>
+                  <circle cx="120" cy="112" r="46" fill="currentColor" opacity="0.1"/>
+                  <path d="M52 216C74 176 102 162 126 176C148 189 164 168 188 148V232H52V216Z" fill="currentColor" opacity="0.16"/>
+                  <circle cx="160" cy="86" r="14" stroke="currentColor" stroke-width="1.5" opacity="0.45"/>
+                </svg>
+                <p class="media-placeholder__title">Khung ảnh bìa tạp chí</p>
+                <p class="media-placeholder__hint">Đặt ảnh của bạn tại đường dẫn <code>images/cover.jpg</code></p>
+                <label class="media-placeholder__upload">
+                  <span>Xem thử ảnh từ máy</span>
+                  <input type="file" accept="image/*" class="sr-only" data-preview-upload="cover">
+                </label>
+              </div>
+              <figcaption class="cover-frame__caption">
+                <span>Tập san số · Quản lý thông tin K70</span>
+                <span>USSH · 2026</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- =========================================================
+         KHUNG SÁCH / TẠP CHÍ ĐIỆN TỬ (INSIDE SPREAD)
+         ========================================================= -->
+    <section id="magazine-view" class="magazine-shell" hidden aria-label="Nội dung Digital Portfolio">
+      <!-- Thanh điều khiển nhanh trên mobile -->
+      <div class="mobile-book-bar">
+        <button type="button" class="btn btn--subtle" id="mobile-toc-toggle" aria-expanded="false" aria-controls="toc-sidebar">
+          <span aria-hidden="true">☰</span>
+          <span>Mục lục</span>
+        </button>
+        <span class="mobile-book-bar__status" id="mobile-page-status">Trang 1 / 8</span>
+      </div>
+
+      <div class="magazine-book">
+        <!-- CỘT TRÁI: GÁY SÁCH & MỤC LỤC -->
+        <aside id="toc-sidebar" class="book-spine" aria-label="Thông tin sinh viên và Mục lục">
+          <div class="book-spine__header">
+            <div class="book-spine__masthead">
+              <p class="book-spine__label">Digital Portfolio</p>
+              <p class="book-spine__sub">Tạp chí học tập cá nhân · 2026</p>
+            </div>
+            <button type="button" class="book-spine__close" id="mobile-toc-close" aria-label="Đóng mục lục">✕</button>
+          </div>
+
+          <!-- Thẻ tác giả (images/avatar.jpg) -->
+          <div class="author-card">
+            <div class="author-card__avatar-wrap" data-image-slot="avatar">
+              <img
+                src="images/avatar.jpg"
+                alt="Chân dung sinh viên Đỗ Nguyễn Phương Anh"
+                class="author-card__avatar"
+                data-managed-img="avatar"
+              >
+              <div class="media-placeholder media-placeholder--avatar" data-placeholder-for="avatar">
+                <span class="avatar-monogram" aria-hidden="true">PA</span>
+              </div>
+            </div>
+            <div class="author-card__info">
+              <p class="author-card__role">Sinh viên thực hiện</p>
+              <h2 class="author-card__name">Đỗ Nguyễn Phương Anh</h2>
+              <p class="author-card__detail">Quản lý thông tin – K70</p>
+              <p class="author-card__detail">ĐHKHXH&amp;NV – ĐHQGHN (USSH)</p>
+              <p class="avatar-path-hint">Ảnh chân dung: <code>images/avatar.jpg</code></p>
+            </div>
+            <label class="avatar-upload-link">
+              <span>Thử ảnh đại diện</span>
+              <input type="file" accept="image/*" class="sr-only" data-preview-upload="avatar">
+            </label>
+          </div>
+
+          <!-- Mục lục nhấn để chuyển trang -->
+          <nav class="toc" aria-label="Mục lục các chương và bài tập">
+            <p class="toc__heading">Mục lục</p>
+
+            <div class="toc__group">
+              <p class="toc__group-label">Chương 1 · Khởi đầu</p>
+              <button type="button" class="toc__item is-active" data-goto-page="0" aria-current="page">
+                <span class="toc__num">00</span>
+                <span class="toc__text">Giới thiệu bản thân &amp; Mục tiêu</span>
+              </button>
+            </div>
+
+            <div class="toc__group">
+              <p class="toc__group-label">Chương 2 · Bài tập &amp; Dự án</p>
+              <button type="button" class="toc__item" data-goto-page="1">
+                <span class="toc__num">01</span>
+                <span class="toc__text">Máy tính và các thiết bị ngoại vi</span>
+              </button>
+              <button type="button" class="toc__item" data-goto-page="2">
+                <span class="toc__num">02</span>
+                <span class="toc__text">Khai thác dữ liệu và thông tin</span>
+              </button>
+              <button type="button" class="toc__item" data-goto-page="3">
+                <span class="toc__num">03</span>
+                <span class="toc__text">Tổng quan về trí tuệ nhân tạo</span>
+              </button>
+              <button type="button" class="toc__item" data-goto-page="4">
+                <span class="toc__num">04</span>
+                <span class="toc__text">Giao tiếp và hợp tác trong môi trường số</span>
+              </button>
+              <button type="button" class="toc__item" data-goto-page="5">
+                <span class="toc__num">05</span>
+                <span class="toc__text">Sáng tạo nội dung số</span>
+              </button>
+              <button type="button" class="toc__item" data-goto-page="6">
+                <span class="toc__num">06</span>
+                <span class="toc__text">An toàn và liêm chính học thuật trong môi trường số</span>
+              </button>
+            </div>
+
+            <div class="toc__group">
+              <p class="toc__group-label">Chương 3 · Tổng kết</p>
+              <button type="button" class="toc__item" data-goto-page="7">
+                <span class="toc__num">07</span>
+                <span class="toc__text">Tổng kết và phản ánh</span>
+              </button>
+            </div>
+          </nav>
+
+          <div class="book-spine__footer">
+            <button type="button" class="btn btn--subtle btn--full" id="back-to-cover-btn">
+              <span aria-hidden="true">←</span>
+              <span>Quay lại Trang bìa</span>
+            </button>
+            <button type="button" class="btn btn--subtle btn--full" id="print-portfolio-btn">
+              <span aria-hidden="true">⎙</span>
+              <span>In / Lưu bản PDF</span>
+            </button>
+          </div>
+        </aside>
+
+        <!-- CỘT PHẢI: TRANG NỘI DUNG TẠP CHÍ -->
+        <div class="book-page-column" id="book-page-scroll">
+          <!-- Thanh tiến trình đọc & công cụ trang -->
+          <div class="reading-bar">
+            <div class="reading-bar__meta">
+              <span class="reading-bar__chapter" id="current-chapter-label">Chương 1 · Giới thiệu</span>
+              <span class="reading-bar__sep" aria-hidden="true">·</span>
+              <span class="reading-bar__page" id="reading-page-counter">Trang 1 / 8</span>
+            </div>
+
+            <div class="reading-bar__tools">
+              <button type="button" class="btn btn--inline" id="toggle-edit-mode-btn" aria-pressed="false">
+                <span id="edit-mode-label">Chỉnh sửa nhanh</span>
+              </button>
+              <button type="button" class="btn btn--inline" id="reset-edits-btn" hidden>
+                Khôi phục mẫu
+              </button>
+            </div>
+
+            <div class="reading-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="13" aria-label="Tiến trình đọc Digital Portfolio">
+              <div class="reading-progress__fill" id="reading-progress-fill"></div>
+            </div>
+          </div>
+
+          <!-- Thông báo nhỏ khi bật chế độ chỉnh sửa trực tiếp -->
+          <div class="edit-banner" id="edit-mode-banner" hidden>
+            <p>
+              <strong>Chế độ chỉnh sửa nhanh đang bật:</strong> Bạn có thể nhấn trực tiếp vào các vùng nội dung có viền nét đứt để nhập bài làm của mình (tự động lưu trên trình duyệt). Để lưu vĩnh viễn khi đưa lên GitHub Pages, hãy cập nhật nội dung trực tiếp trong tệp <code>index.html</code>.
+            </p>
+          </div>
+
+          <!-- VÙNG HIỂN THỊ CÁC TRANG (8 TRANG) -->
+          <div class="pages-viewport" id="pages-viewport">
+
+            <!-- ========== TRANG 1 (INDEX 0): CHƯƠNG 1 – GIỚI THIỆU ========== -->
+            <article class="magazine-page is-active" data-page="0" data-chapter-label="Chương 1 · Giới thiệu">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 1 · Hồ sơ mở đầu</p>
+                  <span class="page-folio" aria-hidden="true">00</span>
+                </div>
+                <h2 class="page-title">Giới thiệu &amp; Định hướng học tập</h2>
+                <p class="page-lead drop-cap">
+                  Chào mừng bạn đến với cuốn tạp chí số cá nhân của Đỗ Nguyễn Phương Anh. Đây là không gian tổng hợp hành trình học tập, thực hành công nghệ số và ứng dụng trí tuệ nhân tạo trong học phần Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo tại Trường Đại học Khoa học Xã hội và Nhân văn – ĐHQGHN.
+                </p>
+              </header>
+
+              <div class="editorial-grid">
+                <section class="editorial-card editorial-card--wide">
+                  <h3 class="editorial-card__title">1. Giới thiệu bản thân</h3>
+                  <div class="editable-block" data-edit-id="ch1-intro">
+                    <p>
+                      Tôi là <strong>Đỗ Nguyễn Phương Anh</strong>, sinh viên khóa K70 ngành <strong>Quản lý thông tin</strong> tại Trường Đại học Khoa học Xã hội và Nhân văn – Đại học Quốc gia Hà Nội (USSH).
+                    </p>
+                    <p class="placeholder-note">
+                      [Cần bổ sung: Hãy viết thêm 3–5 câu giới thiệu về tính cách, thế mạnh cá nhân, hoặc lý do bạn chọn theo học ngành Quản lý thông tin tại USSH.]
+                    </p>
+                  </div>
+                </section>
+
+                <section class="editorial-card">
+                  <h3 class="editorial-card__title">2. Sở thích và định hướng học tập</h3>
+                  <div class="editable-block" data-edit-id="ch1-interests">
+                    <ul class="editorial-list">
+                      <li><strong>Sở thích cá nhân:</strong> [Cần bổ sung: Ví dụ đọc sách, thiết kế trình bày tài liệu, tìm hiểu công cụ tổ chức tri thức số, nhiếp ảnh hoặc sáng tạo nội dung...]</li>
+                      <li><strong>Định hướng ngành học:</strong> Gắn kết nền tảng khoa học thông tin với năng lực tổ chức, phân tích và quản trị nguồn dữ liệu học thuật trong môi trường số hiện đại.</li>
+                    </ul>
+                  </div>
+                </section>
+
+                <section class="editorial-card">
+                  <h3 class="editorial-card__title">3. Mục tiêu phát triển kỹ năng công nghệ số &amp; AI</h3>
+                  <div class="editable-block" data-edit-id="ch1-goals">
+                    <ul class="editorial-list">
+                      <li>Làm chủ các thao tác quản lý hệ thống tệp, thiết bị và công cụ làm việc số hiệu quả.</li>
+                      <li>Nâng cao kỹ năng tìm kiếm, chọn lọc và đánh giá độ tin cậy của thông tin.</li>
+                      <li>Biết cách thiết kế câu lệnh (prompt) và ứng dụng AI có trách nhiệm, giữ vững tư duy phản biện và liêm chính học thuật.</li>
+                    </ul>
+                  </div>
+                </section>
+
+                <section class="editorial-card editorial-card--wide">
+                  <h3 class="editorial-card__title">4. Mục đích xây dựng Digital Portfolio</h3>
+                  <div class="editable-block" data-edit-id="ch1-purpose">
+                    <p>
+                      Digital Portfolio này được thiết kế như một cuốn tạp chí học tập cá nhân nhằm:
+                    </p>
+                    <ul class="editorial-list">
+                      <li>Hệ thống hóa toàn bộ 06 bài thực hành và dự án của môn học theo cấu trúc rõ ràng, dễ tra cứu.</li>
+                      <li>Lưu trữ minh chứng học tập (hình ảnh thực hành, tệp báo cáo PDF, liên kết sản phẩm) tại một địa chỉ duy nhất.</li>
+                      <li>Ghi lại quá trình tự phản ánh, đánh giá sự tiến bộ của bản thân và tạo nền tảng hồ sơ năng lực số cho các học phần chuyên ngành tiếp theo.</li>
+                    </ul>
+                  </div>
+                </section>
+              </div>
+            </article>
+
+            <!-- ========== TRANG 2 (INDEX 1): CHƯƠNG 2 - BÀI 1 ========== -->
+            <article class="magazine-page" data-page="1" data-chapter-label="Chương 2 · Bài 01">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 2 · Các bài tập và dự án · Bài 01</p>
+                  <span class="page-folio" aria-hidden="true">01</span>
+                </div>
+                <h2 class="page-title">Máy tính và các thiết bị ngoại vi</h2>
+                <p class="page-subtitle">Khung lưu trữ hồ sơ thực hành · Minh chứng: <code>images/bai1.jpg</code> · Tài liệu: <code>documents/bai1.pdf</code></p>
+              </header>
+
+              <div class="assignment-layout">
+                <div class="assignment-main">
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Mục tiêu bài tập</h3>
+                    <div class="editable-block" data-edit-id="b1-goal">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Nêu rõ mục tiêu của Bài 1 — ví dụ: hiểu cấu trúc phần cứng máy tính, phân loại thiết bị ngoại vi nhập/xuất, quản lý kết nối và tối ưu thao tác hệ thống theo yêu cầu giảng viên.]
+                      </p>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Nội dung và quy trình thực hiện</h3>
+                    <div class="editable-block" data-edit-id="b1-process">
+                      <ol class="editorial-steps">
+                        <li><strong>Bước 1 — Chuẩn bị &amp; phân tích đề bài:</strong> <span class="placeholder-note">[Cần bổ sung nội dung công việc chuẩn bị]</span></li>
+                        <li><strong>Bước 2 — Thực hành &amp; thao tác kỹ thuật:</strong> <span class="placeholder-note">[Cần bổ sung các bước thực hành chi tiết bạn đã thực hiện]</span></li>
+                        <li><strong>Bước 3 — Kiểm tra &amp; đóng gói sản phẩm:</strong> <span class="placeholder-note">[Cần bổ sung cách kiểm tra và hoàn thiện bài nộp]</span></li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Kết quả / Sản phẩm hoàn thành</h3>
+                    <div class="editable-block" data-edit-id="b1-result">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mô tả sản phẩm đầu ra bạn đã hoàn thành cho Bài 1 (bảng tổng hợp, sơ đồ thiết bị, báo cáo thực hành, tệp trình chiếu...).]
+                      </p>
+                    </div>
+                    <div class="product-link-row">
+                      <span class="product-link-row__label">Liên kết sản phẩm:</span>
+                      <div class="editable-link-wrap" data-link-id="b1-link">
+                        <a href="#" class="product-link is-empty" data-product-link="b1-link" target="_blank" rel="noopener noreferrer">[Chưa gắn liên kết — Chỉnh sửa trong HTML hoặc Chế độ chỉnh sửa nhanh]</a>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Tự đánh giá &amp; Những điều học được</h3>
+                    <div class="editable-block" data-edit-id="b1-reflection">
+                      <ul class="editorial-list">
+                        <li><strong>Điểm hài lòng:</strong> <span class="placeholder-note">[Cần bổ sung phần tự nhận xét điểm làm tốt]</span></li>
+                        <li><strong>Điều cần cải thiện:</strong> <span class="placeholder-note">[Cần bổ sung hạn chế hoặc khó khăn gặp phải]</span></li>
+                        <li><strong>Bài học rút ra:</strong> <span class="placeholder-note">[Cần bổ sung kiến thức/kỹ năng bạn ghi nhớ sau bài tập này]</span></li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+
+                <aside class="assignment-media">
+                  <section class="media-card">
+                    <h3 class="media-card__title">Ảnh minh chứng · Bài 01</h3>
+                    <figure class="evidence-figure" data-image-slot="bai1">
+                      <img
+                        src="images/bai1.jpg"
+                        alt="Ảnh minh chứng Bài 1: Máy tính và các thiết bị ngoại vi"
+                        class="evidence-figure__img"
+                        data-managed-img="bai1"
+                      >
+                      <div class="media-placeholder media-placeholder--evidence" data-placeholder-for="bai1">
+                        <svg class="media-placeholder__art media-placeholder__art--sm" viewBox="0 0 180 120" fill="none" aria-hidden="true">
+                          <rect x="12" y="12" width="156" height="96" rx="10" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.5"/>
+                          <circle cx="56" cy="46" r="12" fill="currentColor" opacity="0.16"/>
+                          <path d="M28 94L68 62L98 84L126 56L152 94H28Z" fill="currentColor" opacity="0.14"/>
+                        </svg>
+                        <p class="media-placeholder__title">Chưa có ảnh minh chứng</p>
+                        <p class="media-placeholder__hint">Tải ảnh vào <code>images/bai1.jpg</code></p>
+                      </div>
+                      <figcaption class="evidence-figure__caption">Hình minh họa kết quả thực hành Bài 01</figcaption>
+                    </figure>
+
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-zoom-slot="bai1" data-zoom-title="Bài 01 — Máy tính và các thiết bị ngoại vi">
+                        Phóng to ảnh minh chứng
+                      </button>
+                      <label class="btn btn--subtle btn--sm">
+                        <span>Thử ảnh từ máy</span>
+                        <input type="file" accept="image/*" class="sr-only" data-preview-upload="bai1">
+                      </label>
+                    </div>
+                  </section>
+
+                  <section class="media-card">
+                    <h3 class="media-card__title">Tệp báo cáo PDF</h3>
+                    <p class="media-card__desc">Tài liệu đính kèm đặt tại <code>documents/bai1.pdf</code></p>
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-open-pdf="documents/bai1.pdf" data-pdf-title="Bài 01 — Máy tính và các thiết bị ngoại vi">
+                        Xem trước PDF
+                      </button>
+                      <a href="documents/bai1.pdf" download="bai1.pdf" class="btn btn--subtle btn--sm" data-download-pdf="documents/bai1.pdf">
+                        Tải file PDF
+                      </a>
+                    </div>
+                  </section>
+                </aside>
+              </div>
+            </article>
+
+            <!-- ========== TRANG 3 (INDEX 2): CHƯƠNG 2 - BÀI 2 ========== -->
+            <article class="magazine-page" data-page="2" data-chapter-label="Chương 2 · Bài 02">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 2 · Các bài tập và dự án · Bài 02</p>
+                  <span class="page-folio" aria-hidden="true">02</span>
+                </div>
+                <h2 class="page-title">Khai thác dữ liệu và thông tin</h2>
+                <p class="page-subtitle">Khung lưu trữ hồ sơ thực hành · Minh chứng: <code>images/bai2.jpg</code> · Tài liệu: <code>documents/bai2.pdf</code></p>
+              </header>
+
+              <div class="assignment-layout">
+                <div class="assignment-main">
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Mục tiêu bài tập</h3>
+                    <div class="editable-block" data-edit-id="b2-goal">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Nêu rõ mục tiêu của Bài 2 — ví dụ: kỹ năng tìm kiếm học thuật với toán tử nâng cao, đánh giá độ tin cậy nguồn tin, tổ chức và trích dẫn dữ liệu đúng chuẩn.]
+                      </p>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Nội dung và quy trình thực hiện</h3>
+                    <div class="editable-block" data-edit-id="b2-process">
+                      <ol class="editorial-steps">
+                        <li><strong>Bước 1 — Xác định từ khóa &amp; nguồn tin:</strong> <span class="placeholder-note">[Cần bổ sung từ khóa, cơ sở dữ liệu hoặc chủ đề bạn đã chọn]</span></li>
+                        <li><strong>Bước 2 — Truy xuất &amp; sàng lọc thông tin:</strong> <span class="placeholder-note">[Cần bổ sung tiêu chí đánh giá và công cụ khai thác]</span></li>
+                        <li><strong>Bước 3 — Tổng hợp &amp; trình bày kết quả:</strong> <span class="placeholder-note">[Cần bổ sung cách tổng hợp dữ liệu thành báo cáo]</span></li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Kết quả / Sản phẩm hoàn thành</h3>
+                    <div class="editable-block" data-edit-id="b2-result">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mô tả kết quả cụ thể của Bài 2 (bảng đánh giá nguồn tin, danh mục tài liệu tham khảo, biểu đồ thống kê dữ liệu...).]
+                      </p>
+                    </div>
+                    <div class="product-link-row">
+                      <span class="product-link-row__label">Liên kết sản phẩm:</span>
+                      <div class="editable-link-wrap" data-link-id="b2-link">
+                        <a href="#" class="product-link is-empty" data-product-link="b2-link" target="_blank" rel="noopener noreferrer">[Chưa gắn liên kết — Chỉnh sửa trong HTML hoặc Chế độ chỉnh sửa nhanh]</a>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Tự đánh giá &amp; Những điều học được</h3>
+                    <div class="editable-block" data-edit-id="b2-reflection">
+                      <ul class="editorial-list">
+                        <li><strong>Điểm hài lòng:</strong> <span class="placeholder-note">[Cần bổ sung phần tự đánh giá]</span></li>
+                        <li><strong>Điều cần cải thiện:</strong> <span class="placeholder-note">[Cần bổ sung điểm còn thiếu sót]</span></li>
+                        <li><strong>Bài học rút ra:</strong> <span class="placeholder-note">[Cần bổ sung kinh nghiệm khai thác dữ liệu gắn với ngành Quản lý thông tin]</span></li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+
+                <aside class="assignment-media">
+                  <section class="media-card">
+                    <h3 class="media-card__title">Ảnh minh chứng · Bài 02</h3>
+                    <figure class="evidence-figure" data-image-slot="bai2">
+                      <img
+                        src="images/bai2.jpg"
+                        alt="Ảnh minh chứng Bài 2: Khai thác dữ liệu và thông tin"
+                        class="evidence-figure__img"
+                        data-managed-img="bai2"
+                      >
+                      <div class="media-placeholder media-placeholder--evidence" data-placeholder-for="bai2">
+                        <svg class="media-placeholder__art media-placeholder__art--sm" viewBox="0 0 180 120" fill="none" aria-hidden="true">
+                          <rect x="12" y="12" width="156" height="96" rx="10" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.5"/>
+                          <circle cx="56" cy="46" r="12" fill="currentColor" opacity="0.16"/>
+                          <path d="M28 94L68 62L98 84L126 56L152 94H28Z" fill="currentColor" opacity="0.14"/>
+                        </svg>
+                        <p class="media-placeholder__title">Chưa có ảnh minh chứng</p>
+                        <p class="media-placeholder__hint">Tải ảnh vào <code>images/bai2.jpg</code></p>
+                      </div>
+                      <figcaption class="evidence-figure__caption">Hình minh họa kết quả thực hành Bài 02</figcaption>
+                    </figure>
+
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-zoom-slot="bai2" data-zoom-title="Bài 02 — Khai thác dữ liệu và thông tin">
+                        Phóng to ảnh minh chứng
+                      </button>
+                      <label class="btn btn--subtle btn--sm">
+                        <span>Thử ảnh từ máy</span>
+                        <input type="file" accept="image/*" class="sr-only" data-preview-upload="bai2">
+                      </label>
+                    </div>
+                  </section>
+
+                  <section class="media-card">
+                    <h3 class="media-card__title">Tệp báo cáo PDF</h3>
+                    <p class="media-card__desc">Tài liệu đính kèm đặt tại <code>documents/bai2.pdf</code></p>
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-open-pdf="documents/bai2.pdf" data-pdf-title="Bài 02 — Khai thác dữ liệu và thông tin">
+                        Xem trước PDF
+                      </button>
+                      <a href="documents/bai2.pdf" download="bai2.pdf" class="btn btn--subtle btn--sm" data-download-pdf="documents/bai2.pdf">
+                        Tải file PDF
+                      </a>
+                    </div>
+                  </section>
+                </aside>
+              </div>
+            </article>
+
+            <!-- ========== TRANG 4 (INDEX 3): CHƯƠNG 2 - BÀI 3 ========== -->
+            <article class="magazine-page" data-page="3" data-chapter-label="Chương 2 · Bài 03">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 2 · Các bài tập và dự án · Bài 03</p>
+                  <span class="page-folio" aria-hidden="true">03</span>
+                </div>
+                <h2 class="page-title">Tổng quan về trí tuệ nhân tạo</h2>
+                <p class="page-subtitle">Khung lưu trữ hồ sơ thực hành · Minh chứng: <code>images/bai3.jpg</code> · Tài liệu: <code>documents/bai3.pdf</code></p>
+              </header>
+
+              <div class="assignment-layout">
+                <div class="assignment-main">
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Mục tiêu bài tập</h3>
+                    <div class="editable-block" data-edit-id="b3-goal">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mục tiêu của Bài 3 — ví dụ: nắm vững khái niệm cốt lõi về AI/Generative AI, thực hành thiết kế prompt hiệu quả và kiểm chứng phản hồi từ mô hình AI.]
+                      </p>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Nội dung và quy trình thực hiện</h3>
+                    <div class="editable-block" data-edit-id="b3-process">
+                      <ol class="editorial-steps">
+                        <li><strong>Bước 1 — Tìm hiểu công cụ &amp; nguyên lý AI:</strong> <span class="placeholder-note">[Cần bổ sung công cụ AI bạn đã trải nghiệm]</span></li>
+                        <li><strong>Bước 2 — Xây dựng kịch bản &amp; câu lệnh (Prompt):</strong> <span class="placeholder-note">[Cần bổ sung quy trình thử nghiệm và tinh chỉnh prompt]</span></li>
+                        <li><strong>Bước 3 — Đối chiếu, hiệu chỉnh thông tin:</strong> <span class="placeholder-note">[Cần bổ sung cách bạn kiểm chứng độ chính xác của kết quả AI]</span></li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Kết quả / Sản phẩm hoàn thành</h3>
+                    <div class="editable-block" data-edit-id="b3-result">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mô tả kết quả Bài 3 (bộ prompt mẫu, bảng so sánh công cụ AI, sản phẩm tổng hợp từ thực hành...).]
+                      </p>
+                    </div>
+                    <div class="product-link-row">
+                      <span class="product-link-row__label">Liên kết sản phẩm:</span>
+                      <div class="editable-link-wrap" data-link-id="b3-link">
+                        <a href="#" class="product-link is-empty" data-product-link="b3-link" target="_blank" rel="noopener noreferrer">[Chưa gắn liên kết — Chỉnh sửa trong HTML hoặc Chế độ chỉnh sửa nhanh]</a>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Tự đánh giá &amp; Những điều học được</h3>
+                    <div class="editable-block" data-edit-id="b3-reflection">
+                      <ul class="editorial-list">
+                        <li><strong>Điểm hài lòng:</strong> <span class="placeholder-note">[Cần bổ sung nhận xét cá nhân]</span></li>
+                        <li><strong>Điều cần cải thiện:</strong> <span class="placeholder-note">[Cần bổ sung hạn chế khi làm việc với AI]</span></li>
+                        <li><strong>Bài học rút ra:</strong> <span class="placeholder-note">[Cần bổ sung hiểu biết mới về giới hạn và tiềm năng của AI]</span></li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+
+                <aside class="assignment-media">
+                  <section class="media-card">
+                    <h3 class="media-card__title">Ảnh minh chứng · Bài 03</h3>
+                    <figure class="evidence-figure" data-image-slot="bai3">
+                      <img
+                        src="images/bai3.jpg"
+                        alt="Ảnh minh chứng Bài 3: Tổng quan về trí tuệ nhân tạo"
+                        class="evidence-figure__img"
+                        data-managed-img="bai3"
+                      >
+                      <div class="media-placeholder media-placeholder--evidence" data-placeholder-for="bai3">
+                        <svg class="media-placeholder__art media-placeholder__art--sm" viewBox="0 0 180 120" fill="none" aria-hidden="true">
+                          <rect x="12" y="12" width="156" height="96" rx="10" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.5"/>
+                          <circle cx="56" cy="46" r="12" fill="currentColor" opacity="0.16"/>
+                          <path d="M28 94L68 62L98 84L126 56L152 94H28Z" fill="currentColor" opacity="0.14"/>
+                        </svg>
+                        <p class="media-placeholder__title">Chưa có ảnh minh chứng</p>
+                        <p class="media-placeholder__hint">Tải ảnh vào <code>images/bai3.jpg</code></p>
+                      </div>
+                      <figcaption class="evidence-figure__caption">Hình minh họa kết quả thực hành Bài 03</figcaption>
+                    </figure>
+
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-zoom-slot="bai3" data-zoom-title="Bài 03 — Tổng quan về trí tuệ nhân tạo">
+                        Phóng to ảnh minh chứng
+                      </button>
+                      <label class="btn btn--subtle btn--sm">
+                        <span>Thử ảnh từ máy</span>
+                        <input type="file" accept="image/*" class="sr-only" data-preview-upload="bai3">
+                      </label>
+                    </div>
+                  </section>
+
+                  <section class="media-card">
+                    <h3 class="media-card__title">Tệp báo cáo PDF</h3>
+                    <p class="media-card__desc">Tài liệu đính kèm đặt tại <code>documents/bai3.pdf</code></p>
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-open-pdf="documents/bai3.pdf" data-pdf-title="Bài 03 — Tổng quan về trí tuệ nhân tạo">
+                        Xem trước PDF
+                      </button>
+                      <a href="documents/bai3.pdf" download="bai3.pdf" class="btn btn--subtle btn--sm" data-download-pdf="documents/bai3.pdf">
+                        Tải file PDF
+                      </a>
+                    </div>
+                  </section>
+                </aside>
+              </div>
+            </article>
+
+            <!-- ========== TRANG 5 (INDEX 4): CHƯƠNG 2 - BÀI 4 ========== -->
+            <article class="magazine-page" data-page="4" data-chapter-label="Chương 2 · Bài 04">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 2 · Các bài tập và dự án · Bài 04</p>
+                  <span class="page-folio" aria-hidden="true">04</span>
+                </div>
+                <h2 class="page-title">Giao tiếp và hợp tác trong môi trường số</h2>
+                <p class="page-subtitle">Khung lưu trữ hồ sơ thực hành · Minh chứng: <code>images/bai4.jpg</code> · Tài liệu: <code>documents/bai4.pdf</code></p>
+              </header>
+
+              <div class="assignment-layout">
+                <div class="assignment-main">
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Mục tiêu bài tập</h3>
+                    <div class="editable-block" data-edit-id="b4-goal">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mục tiêu của Bài 4 — ví dụ: sử dụng công cụ làm việc nhóm trực tuyến, chia sẻ quyền truy cập an toàn, quy tắc ứng xử số (Netiquette) khi phối hợp học tập.]
+                      </p>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Nội dung và quy trình thực hiện</h3>
+                    <div class="editable-block" data-edit-id="b4-process">
+                      <ol class="editorial-steps">
+                        <li><strong>Bước 1 — Thiết lập không gian làm việc nhóm:</strong> <span class="placeholder-note">[Cần bổ sung nền tảng sử dụng và vai trò của bạn trong nhóm]</span></li>
+                        <li><strong>Bước 2 — Phối hợp biên tập &amp; trao đổi trực tuyến:</strong> <span class="placeholder-note">[Cần bổ sung cách phân công, phản hồi và quản lý phiên bản]</span></li>
+                        <li><strong>Bước 3 — Tổng hợp kết quả hợp tác:</strong> <span class="placeholder-note">[Cần bổ sung cách hoàn thiện sản phẩm nhóm]</span></li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Kết quả / Sản phẩm hoàn thành</h3>
+                    <div class="editable-block" data-edit-id="b4-result">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mô tả kết quả hợp tác nhóm hoặc cá nhân đạt được trong Bài 4.]
+                      </p>
+                    </div>
+                    <div class="product-link-row">
+                      <span class="product-link-row__label">Liên kết sản phẩm:</span>
+                      <div class="editable-link-wrap" data-link-id="b4-link">
+                        <a href="#" class="product-link is-empty" data-product-link="b4-link" target="_blank" rel="noopener noreferrer">[Chưa gắn liên kết — Chỉnh sửa trong HTML hoặc Chế độ chỉnh sửa nhanh]</a>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Tự đánh giá &amp; Những điều học được</h3>
+                    <div class="editable-block" data-edit-id="b4-reflection">
+                      <ul class="editorial-list">
+                        <li><strong>Điểm hài lòng:</strong> <span class="placeholder-note">[Cần bổ sung phần tự đánh giá vai trò và mức độ đóng góp]</span></li>
+                        <li><strong>Điều cần cải thiện:</strong> <span class="placeholder-note">[Cần bổ sung điểm có thể phối hợp tốt hơn]</span></li>
+                        <li><strong>Bài học rút ra:</strong> <span class="placeholder-note">[Cần bổ sung kỹ năng giao tiếp và quản trị công việc trực tuyến]</span></li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+
+                <aside class="assignment-media">
+                  <section class="media-card">
+                    <h3 class="media-card__title">Ảnh minh chứng · Bài 04</h3>
+                    <figure class="evidence-figure" data-image-slot="bai4">
+                      <img
+                        src="images/bai4.jpg"
+                        alt="Ảnh minh chứng Bài 4: Giao tiếp và hợp tác trong môi trường số"
+                        class="evidence-figure__img"
+                        data-managed-img="bai4"
+                      >
+                      <div class="media-placeholder media-placeholder--evidence" data-placeholder-for="bai4">
+                        <svg class="media-placeholder__art media-placeholder__art--sm" viewBox="0 0 180 120" fill="none" aria-hidden="true">
+                          <rect x="12" y="12" width="156" height="96" rx="10" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.5"/>
+                          <circle cx="56" cy="46" r="12" fill="currentColor" opacity="0.16"/>
+                          <path d="M28 94L68 62L98 84L126 56L152 94H28Z" fill="currentColor" opacity="0.14"/>
+                        </svg>
+                        <p class="media-placeholder__title">Chưa có ảnh minh chứng</p>
+                        <p class="media-placeholder__hint">Tải ảnh vào <code>images/bai4.jpg</code></p>
+                      </div>
+                      <figcaption class="evidence-figure__caption">Hình minh họa kết quả thực hành Bài 04</figcaption>
+                    </figure>
+
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-zoom-slot="bai4" data-zoom-title="Bài 04 — Giao tiếp và hợp tác trong môi trường số">
+                        Phóng to ảnh minh chứng
+                      </button>
+                      <label class="btn btn--subtle btn--sm">
+                        <span>Thử ảnh từ máy</span>
+                        <input type="file" accept="image/*" class="sr-only" data-preview-upload="bai4">
+                      </label>
+                    </div>
+                  </section>
+
+                  <section class="media-card">
+                    <h3 class="media-card__title">Tệp báo cáo PDF</h3>
+                    <p class="media-card__desc">Tài liệu đính kèm đặt tại <code>documents/bai4.pdf</code></p>
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-open-pdf="documents/bai4.pdf" data-pdf-title="Bài 04 — Giao tiếp và hợp tác trong môi trường số">
+                        Xem trước PDF
+                      </button>
+                      <a href="documents/bai4.pdf" download="bai4.pdf" class="btn btn--subtle btn--sm" data-download-pdf="documents/bai4.pdf">
+                        Tải file PDF
+                      </a>
+                    </div>
+                  </section>
+                </aside>
+              </div>
+            </article>
+
+            <!-- ========== TRANG 6 (INDEX 5): CHƯƠNG 2 - BÀI 5 ========== -->
+            <article class="magazine-page" data-page="5" data-chapter-label="Chương 2 · Bài 05">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 2 · Các bài tập và dự án · Bài 05</p>
+                  <span class="page-folio" aria-hidden="true">05</span>
+                </div>
+                <h2 class="page-title">Sáng tạo nội dung số</h2>
+                <p class="page-subtitle">Khung lưu trữ hồ sơ thực hành · Minh chứng: <code>images/bai5.jpg</code> · Tài liệu: <code>documents/bai5.pdf</code></p>
+              </header>
+
+              <div class="assignment-layout">
+                <div class="assignment-main">
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Mục tiêu bài tập</h3>
+                    <div class="editable-block" data-edit-id="b5-goal">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mục tiêu của Bài 5 — ví dụ: lên ý tưởng, biên tập và thiết kế ấn phẩm đa phương tiện (infographic, slide, video, hoặc bài viết số) có tính thẩm mỹ và bản quyền rõ ràng.]
+                      </p>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Nội dung và quy trình thực hiện</h3>
+                    <div class="editable-block" data-edit-id="b5-process">
+                      <ol class="editorial-steps">
+                        <li><strong>Bước 1 — Lên kịch bản &amp; bố cục nội dung:</strong> <span class="placeholder-note">[Cần bổ sung chủ đề sản phẩm và đối tượng người xem]</span></li>
+                        <li><strong>Bước 2 — Thiết kế &amp; sản xuất đa phương tiện:</strong> <span class="placeholder-note">[Cần bổ sung công cụ sáng tạo và nguồn tài nguyên hợp pháp đã dùng]</span></li>
+                        <li><strong>Bước 3 — Chỉnh sửa &amp; xuất bản sản phẩm:</strong> <span class="placeholder-note">[Cần bổ sung quy trình rà soát chất lượng]</span></li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Kết quả / Sản phẩm hoàn thành</h3>
+                    <div class="editable-block" data-edit-id="b5-result">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mô tả sản phẩm sáng tạo nội dung số của bạn (định dạng, nội dung truyền tải, điểm nhấn thiết kế).]
+                      </p>
+                    </div>
+                    <div class="product-link-row">
+                      <span class="product-link-row__label">Liên kết sản phẩm:</span>
+                      <div class="editable-link-wrap" data-link-id="b5-link">
+                        <a href="#" class="product-link is-empty" data-product-link="b5-link" target="_blank" rel="noopener noreferrer">[Chưa gắn liên kết — Chỉnh sửa trong HTML hoặc Chế độ chỉnh sửa nhanh]</a>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Tự đánh giá &amp; Những điều học được</h3>
+                    <div class="editable-block" data-edit-id="b5-reflection">
+                      <ul class="editorial-list">
+                        <li><strong>Điểm hài lòng:</strong> <span class="placeholder-note">[Cần bổ sung điểm bạn tâm đắc ở sản phẩm]</span></li>
+                        <li><strong>Điều cần cải thiện:</strong> <span class="placeholder-note">[Cần bổ sung yếu tố muốn hoàn thiện hơn]</span></li>
+                        <li><strong>Bài học rút ra:</strong> <span class="placeholder-note">[Cần bổ sung bài học về tư duy thiết kế và truyền đạt thông tin]</span></li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+
+                <aside class="assignment-media">
+                  <section class="media-card">
+                    <h3 class="media-card__title">Ảnh minh chứng · Bài 05</h3>
+                    <figure class="evidence-figure" data-image-slot="bai5">
+                      <img
+                        src="images/bai5.jpg"
+                        alt="Ảnh minh chứng Bài 5: Sáng tạo nội dung số"
+                        class="evidence-figure__img"
+                        data-managed-img="bai5"
+                      >
+                      <div class="media-placeholder media-placeholder--evidence" data-placeholder-for="bai5">
+                        <svg class="media-placeholder__art media-placeholder__art--sm" viewBox="0 0 180 120" fill="none" aria-hidden="true">
+                          <rect x="12" y="12" width="156" height="96" rx="10" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.5"/>
+                          <circle cx="56" cy="46" r="12" fill="currentColor" opacity="0.16"/>
+                          <path d="M28 94L68 62L98 84L126 56L152 94H28Z" fill="currentColor" opacity="0.14"/>
+                        </svg>
+                        <p class="media-placeholder__title">Chưa có ảnh minh chứng</p>
+                        <p class="media-placeholder__hint">Tải ảnh vào <code>images/bai5.jpg</code></p>
+                      </div>
+                      <figcaption class="evidence-figure__caption">Hình minh họa kết quả thực hành Bài 05</figcaption>
+                    </figure>
+
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-zoom-slot="bai5" data-zoom-title="Bài 05 — Sáng tạo nội dung số">
+                        Phóng to ảnh minh chứng
+                      </button>
+                      <label class="btn btn--subtle btn--sm">
+                        <span>Thử ảnh từ máy</span>
+                        <input type="file" accept="image/*" class="sr-only" data-preview-upload="bai5">
+                      </label>
+                    </div>
+                  </section>
+
+                  <section class="media-card">
+                    <h3 class="media-card__title">Tệp báo cáo PDF</h3>
+                    <p class="media-card__desc">Tài liệu đính kèm đặt tại <code>documents/bai5.pdf</code></p>
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-open-pdf="documents/bai5.pdf" data-pdf-title="Bài 05 — Sáng tạo nội dung số">
+                        Xem trước PDF
+                      </button>
+                      <a href="documents/bai5.pdf" download="bai5.pdf" class="btn btn--subtle btn--sm" data-download-pdf="documents/bai5.pdf">
+                        Tải file PDF
+                      </a>
+                    </div>
+                  </section>
+                </aside>
+              </div>
+            </article>
+
+            <!-- ========== TRANG 7 (INDEX 6): CHƯƠNG 2 - BÀI 6 ========== -->
+            <article class="magazine-page" data-page="6" data-chapter-label="Chương 2 · Bài 06">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 2 · Các bài tập và dự án · Bài 06</p>
+                  <span class="page-folio" aria-hidden="true">06</span>
+                </div>
+                <h2 class="page-title">An toàn và liêm chính học thuật trong môi trường số</h2>
+                <p class="page-subtitle">Khung lưu trữ hồ sơ thực hành · Minh chứng: <code>images/bai6.jpg</code> · Tài liệu: <code>documents/bai6.pdf</code></p>
+              </header>
+
+              <div class="assignment-layout">
+                <div class="assignment-main">
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Mục tiêu bài tập</h3>
+                    <div class="editable-block" data-edit-id="b6-goal">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mục tiêu của Bài 6 — ví dụ: nhận diện rủi ro bảo mật dữ liệu cá nhân, hiểu quy định trích dẫn và minh bạch việc sử dụng AI trong nghiên cứu học thuật.]
+                      </p>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Nội dung và quy trình thực hiện</h3>
+                    <div class="editable-block" data-edit-id="b6-process">
+                      <ol class="editorial-steps">
+                        <li><strong>Bước 1 — Phân tích tình huống / quy định:</strong> <span class="placeholder-note">[Cần bổ sung tình huống an toàn số hoặc quy chuẩn liêm chính đã nghiên cứu]</span></li>
+                        <li><strong>Bước 2 — Đánh giá &amp; đề xuất giải pháp:</strong> <span class="placeholder-note">[Cần bổ sung các nguyên tắc bảo mật và trích dẫn AI bạn đã tổng hợp]</span></li>
+                        <li><strong>Bước 3 — Hoàn thiện cam kết &amp; báo cáo:</strong> <span class="placeholder-note">[Cần bổ sung nội dung hoàn thiện bài tập]</span></li>
+                      </ol>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Kết quả / Sản phẩm hoàn thành</h3>
+                    <div class="editable-block" data-edit-id="b6-result">
+                      <p class="placeholder-note">
+                        [Cần bổ sung: Mô tả sản phẩm hoàn thành của Bài 6 (bài tiểu luận ngắn, infographic quy tắc an toàn số, bảng checklist liêm chính học thuật...).]
+                      </p>
+                    </div>
+                    <div class="product-link-row">
+                      <span class="product-link-row__label">Liên kết sản phẩm:</span>
+                      <div class="editable-link-wrap" data-link-id="b6-link">
+                        <a href="#" class="product-link is-empty" data-product-link="b6-link" target="_blank" rel="noopener noreferrer">[Chưa gắn liên kết — Chỉnh sửa trong HTML hoặc Chế độ chỉnh sửa nhanh]</a>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="editorial-card">
+                    <h3 class="editorial-card__title">Tự đánh giá &amp; Những điều học được</h3>
+                    <div class="editable-block" data-edit-id="b6-reflection">
+                      <ul class="editorial-list">
+                        <li><strong>Điểm hài lòng:</strong> <span class="placeholder-note">[Cần bổ sung phần tự nhận xét]</span></li>
+                        <li><strong>Điều cần cải thiện:</strong> <span class="placeholder-note">[Cần bổ sung thói quen cần rèn thêm]</span></li>
+                        <li><strong>Bài học rút ra:</strong> <span class="placeholder-note">[Cần bổ sung bài học về đạo đức học thuật và an toàn thông tin]</span></li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+
+                <aside class="assignment-media">
+                  <section class="media-card">
+                    <h3 class="media-card__title">Ảnh minh chứng · Bài 06</h3>
+                    <figure class="evidence-figure" data-image-slot="bai6">
+                      <img
+                        src="images/bai6.jpg"
+                        alt="Ảnh minh chứng Bài 6: An toàn và liêm chính học thuật trong môi trường số"
+                        class="evidence-figure__img"
+                        data-managed-img="bai6"
+                      >
+                      <div class="media-placeholder media-placeholder--evidence" data-placeholder-for="bai6">
+                        <svg class="media-placeholder__art media-placeholder__art--sm" viewBox="0 0 180 120" fill="none" aria-hidden="true">
+                          <rect x="12" y="12" width="156" height="96" rx="10" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.5"/>
+                          <circle cx="56" cy="46" r="12" fill="currentColor" opacity="0.16"/>
+                          <path d="M28 94L68 62L98 84L126 56L152 94H28Z" fill="currentColor" opacity="0.14"/>
+                        </svg>
+                        <p class="media-placeholder__title">Chưa có ảnh minh chứng</p>
+                        <p class="media-placeholder__hint">Tải ảnh vào <code>images/bai6.jpg</code></p>
+                      </div>
+                      <figcaption class="evidence-figure__caption">Hình minh họa kết quả thực hành Bài 06</figcaption>
+                    </figure>
+
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-zoom-slot="bai6" data-zoom-title="Bài 06 — An toàn và liêm chính học thuật trong môi trường số">
+                        Phóng to ảnh minh chứng
+                      </button>
+                      <label class="btn btn--subtle btn--sm">
+                        <span>Thử ảnh từ máy</span>
+                        <input type="file" accept="image/*" class="sr-only" data-preview-upload="bai6">
+                      </label>
+                    </div>
+                  </section>
+
+                  <section class="media-card">
+                    <h3 class="media-card__title">Tệp báo cáo PDF</h3>
+                    <p class="media-card__desc">Tài liệu đính kèm đặt tại <code>documents/bai6.pdf</code></p>
+                    <div class="media-card__actions">
+                      <button type="button" class="btn btn--primary btn--sm" data-open-pdf="documents/bai6.pdf" data-pdf-title="Bài 06 — An toàn và liêm chính học thuật trong môi trường số">
+                        Xem trước PDF
+                      </button>
+                      <a href="documents/bai6.pdf" download="bai6.pdf" class="btn btn--subtle btn--sm" data-download-pdf="documents/bai6.pdf">
+                        Tải file PDF
+                      </a>
+                    </div>
+                  </section>
+                </aside>
+              </div>
+            </article>
+
+            <!-- ========== TRANG 8 (INDEX 7): CHƯƠNG 3 – TỔNG KẾT VÀ PHẢN ÁNH ========== -->
+            <article class="magazine-page" data-page="7" data-chapter-label="Chương 3 · Tổng kết và phản ánh">
+              <header class="page-header">
+                <div class="page-header__top">
+                  <p class="page-kicker">Chương 3 · Khép lại học phần</p>
+                  <span class="page-folio" aria-hidden="true">07</span>
+                </div>
+                <h2 class="page-title">Tổng kết và phản ánh hành trình học tập</h2>
+                <p class="page-lead drop-cap">
+                  Nhìn lại toàn bộ học phần Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo, mỗi bài tập không chỉ là một sản phẩm nộp bài mà còn là một bước chuyển mình trong tư duy làm việc số của sinh viên ngành Quản lý thông tin.
+                </p>
+              </header>
+
+              <div class="editorial-grid">
+                <section class="editorial-card">
+                  <h3 class="editorial-card__title">1. Những kiến thức và kỹ năng đã tiếp thu</h3>
+                  <div class="editable-block" data-edit-id="ch3-skills">
+                    <p class="placeholder-note">
+                      [Cần bổ sung: Tổng hợp các nhóm kiến thức và kỹ năng bạn cảm thấy vững vàng nhất sau 6 bài học — từ phần cứng, khai thác thông tin, AI tạo sinh, hợp tác số đến sáng tạo nội dung và an toàn học thuật.]
+                    </p>
+                  </div>
+                </section>
+
+                <section class="editorial-card">
+                  <h3 class="editorial-card__title">2. Điều tâm đắc nhất trong quá trình học</h3>
+                  <div class="editable-block" data-edit-id="ch3-highlight">
+                    <p class="placeholder-note">
+                      [Cần bổ sung: Chia sẻ khoảnh khắc, bài tập hoặc bài học khiến bạn ấn tượng nhất và thay đổi cách bạn tiếp cận công nghệ.]
+                    </p>
+                  </div>
+                </section>
+
+                <section class="editorial-card">
+                  <h3 class="editorial-card__title">3. Khó khăn và cách khắc phục</h3>
+                  <div class="editable-block" data-edit-id="ch3-challenges">
+                    <p class="placeholder-note">
+                      [Cần bổ sung: Ghi lại 1–2 thử thách bạn đã gặp trong quá trình thực hiện bài tập hoặc thiết kế Portfolio và cách bạn tìm tòi giải quyết.]
+                    </p>
+                  </div>
+                </section>
+
+                <section class="editorial-card">
+                  <h3 class="editorial-card__title">4. Định hướng áp dụng trong học tập và công việc tương lai</h3>
+                  <div class="editable-block" data-edit-id="ch3-future">
+                    <p class="placeholder-note">
+                      [Cần bổ sung: Kế hoạch ứng dụng công nghệ số và AI vào các môn chuyên ngành Quản lý thông tin, nghiên cứu khoa học sinh viên và định hướng nghề nghiệp sau khi ra trường.]
+                    </p>
+                  </div>
+                </section>
+              </div>
+
+              <blockquote class="editorial-quote">
+                <p>“Công nghệ số mở rộng khả năng tiếp cận tri thức, còn tư duy tổ chức thông tin và bản lĩnh học thuật quyết định giá trị của người làm chủ thông tin.”</p>
+                <footer>— Đỗ Nguyễn Phương Anh · Quản lý thông tin K70 · USSH 2026</footer>
+              </blockquote>
+            </article>
+          </div>
+
+          <!-- Thanh điều hướng Trang trước / Trang tiếp theo -->
+          <nav class="page-pager" aria-label="Điều hướng giữa các trang">
+            <button type="button" class="btn btn--pager" id="prev-page-btn" disabled>
+              <span aria-hidden="true">←</span>
+              <span>Trang trước</span>
+            </button>
+
+            <span class="page-pager__indicator" id="pager-indicator">Trang 1 / 8</span>
+
+            <button type="button" class="btn btn--pager" id="next-page-btn">
+              <span>Trang tiếp theo</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </nav>
+
+          <footer class="book-footer">
+            <span>Đỗ Nguyễn Phương Anh</span>
+            <span aria-hidden="true">·</span>
+            <span>Quản lý thông tin – K70</span>
+            <span aria-hidden="true">·</span>
+            <span>ĐHKHXH&amp;NV – ĐHQGHN (USSH)</span>
+            <span aria-hidden="true">·</span>
+            <span>2026</span>
+          </footer>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Nút quay về đầu trang -->
+  <button type="button" class="back-to-top" id="back-to-top-btn" aria-label="Quay về đầu trang" hidden>
+    <span aria-hidden="true">↑</span>
+    <span>Đầu trang</span>
+  </button>
+
+  <!-- Modal Phóng to ảnh minh chứng (Lightbox) -->
+  <div class="modal-backdrop" id="lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden>
+    <div class="modal-dialog modal-dialog--lightbox">
+      <div class="modal-header">
+        <h3 class="modal-title" id="lightbox-title">Ảnh minh chứng</h3>
+        <button type="button" class="modal-close" id="lightbox-close-btn" aria-label="Đóng cửa sổ phóng to">✕</button>
+      </div>
+      <div class="modal-body modal-body--center">
+        <img src="" alt="" id="lightbox-img" class="lightbox-img" hidden>
+        <div class="lightbox-empty" id="lightbox-empty" hidden>
+          <p class="lightbox-empty__title">Chưa tìm thấy tệp ảnh minh chứng</p>
+          <p class="lightbox-empty__desc" id="lightbox-empty-path"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Xem & Tải tài liệu PDF -->
+  <div class="modal-backdrop" id="pdf-modal" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-title" hidden>
+    <div class="modal-dialog modal-dialog--pdf">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="pdf-modal-title">Tài liệu PDF</h3>
+          <p class="modal-subtitle" id="pdf-modal-path"></p>
+        </div>
+        <div class="modal-header__actions">
+          <a href="#" download class="btn btn--primary btn--sm" id="pdf-modal-download">Tải xuống PDF</a>
+          <button type="button" class="modal-close" id="pdf-close-btn" aria-label="Đóng trình xem PDF">✕</button>
+        </div>
+      </div>
+      <div class="modal-body modal-body--pdf">
+        <iframe src="" title="Trình xem tài liệu PDF" class="pdf-iframe" id="pdf-iframe" hidden></iframe>
+        <div class="pdf-empty" id="pdf-empty" hidden>
+          <p class="pdf-empty__title">Chưa có tệp PDF tại đường dẫn này</p>
+          <p class="pdf-empty__desc" id="pdf-empty-hint"></p>
+          <label class="btn btn--primary btn--sm">
+            <span>Mở thử file PDF từ máy tính</span>
+            <input type="file" accept="application/pdf" class="sr-only" id="local-pdf-input">
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lớp nền tối khi mở menu mục lục trên điện thoại -->
+  <div class="drawer-scrim" id="drawer-scrim" hidden></div>
+</body>
+</html>
